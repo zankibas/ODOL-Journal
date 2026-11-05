@@ -7,6 +7,25 @@ $ErrorActionPreference = "Continue"
 $env:Path += ";$env:LOCALAPPDATA\Programs\Git\cmd;$env:LOCALAPPDATA\Programs\Git\mingw64\bin;C:\Program Files\GitHub CLI;C:\Program Files (x86)\cloudflared;C:\Program Files\cloudflared"
 Set-Location "C:\xampp\htdocs\ODOL"
 
+function Start-NewTunnel([string]$logFile) {
+    Get-Process cloudflared -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+    Start-Sleep -Seconds 1
+    if (Test-Path $logFile) { Remove-Item $logFile -Force -ErrorAction SilentlyContinue }
+    $cfExe = "C:\Program Files (x86)\cloudflared\cloudflared.exe"
+    if (-not (Test-Path $cfExe)) { $cfExe = "C:\Program Files\cloudflared\cloudflared.exe" }
+    Start-Process -FilePath $cfExe -ArgumentList "tunnel --url http://localhost:80 --logfile `"$logFile`"" -WindowStyle Hidden
+    for ($i = 0; $i -lt 25; $i++) {
+        Start-Sleep -Seconds 1
+        if (Test-Path $logFile) {
+            $content = Get-Content $logFile -Raw -ErrorAction SilentlyContinue
+            if ($content -match "(https://[a-zA-Z0-9-]+\.trycloudflare\.com)") {
+                return $matches[1]
+            }
+        }
+    }
+    return $null
+}
+
 function Ensure-BackendConnector {
     # Pastikan Apache & MySQL XAMPP berjalan
     if (-not (Get-Process httpd -ErrorAction SilentlyContinue)) {
@@ -22,27 +41,13 @@ function Ensure-BackendConnector {
 
     if ($cfProc -and (Test-Path $logFile)) {
         $content = Get-Content $logFile -Raw -ErrorAction SilentlyContinue
-        if ($content -match "(https://[a-zA-Z0-9-]+\.trycloudflare\.com)") {
+        if ($content -notmatch "Unauthorized: Tunnel not found" -and $content -match "(https://[a-zA-Z0-9-]+\.trycloudflare\.com)") {
             $tunnelUrl = $matches[1]
         }
     }
 
     if (-not $tunnelUrl) {
-        Get-Process cloudflared -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
-        if (Test-Path $logFile) { Remove-Item $logFile -Force }
-        $cfExe = "C:\Program Files (x86)\cloudflared\cloudflared.exe"
-        if (-not (Test-Path $cfExe)) { $cfExe = "C:\Program Files\cloudflared\cloudflared.exe" }
-        Start-Process -FilePath $cfExe -ArgumentList "tunnel --url http://localhost:80 --logfile `"$logFile`"" -WindowStyle Hidden
-        for ($i = 0; $i -lt 25; $i++) {
-            Start-Sleep -Seconds 1
-            if (Test-Path $logFile) {
-                $content = Get-Content $logFile -Raw -ErrorAction SilentlyContinue
-                if ($content -match "(https://[a-zA-Z0-9-]+\.trycloudflare\.com)") {
-                    $tunnelUrl = $matches[1]
-                    break
-                }
-            }
-        }
+        $tunnelUrl = Start-NewTunnel $logFile
     }
 
     if ($tunnelUrl) {
@@ -58,9 +63,6 @@ function Ensure-BackendConnector {
 function Sync-OjsGit {
     Ensure-BackendConnector
 
-    Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Menjalankan Auto Git Pull dari GitHub..." -ForegroundColor Cyan
-    git pull --rebase origin main 2>&1 | Out-Host
-
     # Backup database MySQL odol_jurnal
     if (Test-Path "C:\xampp\mysql\bin\mysqldump.exe") {
         & "C:\xampp\mysql\bin\mysqldump.exe" -u root odol_jurnal --result-file="C:\xampp\htdocs\ODOL\dbscripts\odol_jurnal_backup.sql" 2>$null
@@ -75,9 +77,11 @@ function Sync-OjsGit {
         Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Perubahan terdeteksi, melakukan Auto Commit & Push ke GitHub..." -ForegroundColor Yellow
         git add -A
         git commit -m "Auto-sync OJS ODOL ($(Get-Date -Format 'yyyy-MM-dd HH:mm:ss'))" -q
+        git pull --rebase origin main 2>&1 | Out-Host
         git push origin main 2>&1 | Out-Host
         Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Sinkronisasi ke GitHub & Vercel berhasil!" -ForegroundColor Green
     } else {
+        git pull --rebase origin main 2>&1 | Out-Host
         Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Repository sudah sinkron dengan GitHub." -ForegroundColor Green
     }
 }
