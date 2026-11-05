@@ -42,7 +42,15 @@ function Ensure-BackendConnector {
     if ($cfProc -and (Test-Path $logFile)) {
         $content = Get-Content $logFile -Raw -ErrorAction SilentlyContinue
         if ($content -notmatch "Unauthorized: Tunnel not found" -and $content -match "(https://[a-zA-Z0-9-]+\.trycloudflare\.com)") {
-            $tunnelUrl = $matches[1]
+            $candidateUrl = $matches[1]
+            try {
+                $test = Invoke-WebRequest -Uri "$candidateUrl/ODOL/index.php/journal" -UseBasicParsing -TimeoutSec 5 -ErrorAction Stop
+                if ($test.StatusCode -eq 200) {
+                    $tunnelUrl = $candidateUrl
+                }
+            } catch {
+                $tunnelUrl = $null
+            }
         }
     }
 

@@ -1,6 +1,49 @@
 const fs = require('fs');
 const path = require('path');
 
+let cachedTunnelUrl = '';
+let lastFetchTime = 0;
+
+async function getTunnelBase() {
+  const now = Date.now();
+  if (cachedTunnelUrl && now - lastFetchTime < 30000) {
+    return cachedTunnelUrl;
+  }
+
+  // 1. Try reading latest tunnel URL from GitHub raw dynamically
+  try {
+    const rawRes = await fetch(
+      `https://raw.githubusercontent.com/zankibas/ODOL-Journal/main/api/tunnel_config.json?_t=${now}`,
+      {
+        cache: 'no-store',
+        headers: { 'Cache-Control': 'no-cache' },
+        signal: AbortSignal.timeout(3500),
+      }
+    );
+    if (rawRes.ok) {
+      const data = await rawRes.json();
+      if (data && data.tunnelUrl) {
+        cachedTunnelUrl = data.tunnelUrl.replace(/\/$/, '');
+        lastFetchTime = now;
+        return cachedTunnelUrl;
+      }
+    }
+  } catch (_) {}
+
+  // 2. Fallback to bundled local config
+  try {
+    const configPath = path.join(__dirname, 'tunnel_config.json');
+    if (fs.existsSync(configPath)) {
+      const cfg = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+      cachedTunnelUrl = (cfg.tunnelUrl || '').replace(/\/$/, '');
+      lastFetchTime = now;
+      return cachedTunnelUrl;
+    }
+  } catch (_) {}
+
+  return cachedTunnelUrl || '';
+}
+
 module.exports.config = {
   api: {
     bodyParser: false,
@@ -10,12 +53,7 @@ module.exports.config = {
 
 module.exports = async function handler(req, res) {
   try {
-    const configPath = path.join(__dirname, 'tunnel_config.json');
-    let tunnelBase = '';
-    if (fs.existsSync(configPath)) {
-      const cfg = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-      tunnelBase = (cfg.tunnelUrl || '').replace(/\/$/, '');
-    }
+    const tunnelBase = await getTunnelBase();
 
     if (!tunnelBase) {
       res.status(503).send('OJS Backend URL not configured.');
