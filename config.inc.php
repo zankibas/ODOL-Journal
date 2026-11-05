@@ -43,7 +43,7 @@ strict = Off
 session_cookie_name = OJSSID
 
 ; Session cookie path; if not specified, defaults to the detected base path
-; session_cookie_path = /
+session_cookie_path = /
 
 ; Number of days a session remains valid while idle. Fractional days are allowed
 ; (e.g. 0.5 = 12 hours, 0.0833 ~ 2 hours); the value is clamped to a minimum of 1 minute.
