@@ -14,8 +14,8 @@
       "destination": "/api/proxy?__p=/ODOL/index.php/journal"
     },
     {
-      "source": "/ODOL/:path*",
-      "destination": "/api/proxy?__p=/ODOL/:path*"
+      "source": "/ODOL/:__vp*",
+      "destination": "/api/proxy?__p=/ODOL/:__vp*"
     }
   ]
 }

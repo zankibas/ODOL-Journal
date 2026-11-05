@@ -28,9 +28,11 @@ module.exports = async function handler(req, res) {
     const parsedUrl = new URL(req.url || '/', `https://${vercelHost}`);
     let targetPath = parsedUrl.searchParams.get('__p') || parsedUrl.pathname;
     parsedUrl.searchParams.delete('__p');
+    parsedUrl.searchParams.delete('__vp');
+    parsedUrl.searchParams.delete('path');
 
-    // Restore OJS $$$call$$$ if rewrite collapsed $$ to $
-    targetPath = targetPath.replace(/\${1,3}call\${1,3}/g, '$$$call$$$');
+    // Restore OJS $$$call$$$ (use function replacer so $$ is not treated as escape)
+    targetPath = targetPath.replace(/\${1,3}call\${1,3}/g, () => '$$$call$$$');
 
     if (targetPath === '/' || targetPath === '/ODOL' || targetPath === '/ODOL/' || targetPath === '/api/proxy') {
       targetPath = '/ODOL/index.php/journal';
