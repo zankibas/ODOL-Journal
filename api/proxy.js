@@ -21,7 +21,9 @@ async function getTunnelBase() {
       }
     );
     if (rawRes.ok) {
-      const data = await rawRes.json();
+      const text = await rawRes.text();
+      const cleanJson = text.replace(/^\uFEFF/, '').trim();
+      const data = JSON.parse(cleanJson);
       if (data && data.tunnelUrl) {
         cachedTunnelUrl = data.tunnelUrl.replace(/\/$/, '');
         lastFetchTime = now;
@@ -34,7 +36,9 @@ async function getTunnelBase() {
   try {
     const configPath = path.join(__dirname, 'tunnel_config.json');
     if (fs.existsSync(configPath)) {
-      const cfg = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+      let content = fs.readFileSync(configPath, 'utf8');
+      content = content.replace(/^\uFEFF/, '').trim();
+      const cfg = JSON.parse(content);
       cachedTunnelUrl = (cfg.tunnelUrl || '').replace(/\/$/, '');
       lastFetchTime = now;
       return cachedTunnelUrl;

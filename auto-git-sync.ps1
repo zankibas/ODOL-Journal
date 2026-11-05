@@ -71,7 +71,7 @@ function Ensure-BackendConnector {
         $newJson = "{`n  `"tunnelUrl`": `"$tunnelUrl`"`n}"
         $oldJson = if (Test-Path $cfgPath) { Get-Content $cfgPath -Raw } else { "" }
         if ($oldJson.Trim() -ne $newJson.Trim()) {
-            Set-Content -Path $cfgPath -Value $newJson -Encoding UTF8
+            [System.IO.File]::WriteAllText($cfgPath, $newJson, (New-Object System.Text.UTF8Encoding($false)))
         }
     }
 }
