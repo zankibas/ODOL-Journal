@@ -13,13 +13,21 @@ function Start-NewTunnel([string]$logFile) {
     if (Test-Path $logFile) { Remove-Item $logFile -Force -ErrorAction SilentlyContinue }
     $cfExe = "C:\Program Files (x86)\cloudflared\cloudflared.exe"
     if (-not (Test-Path $cfExe)) { $cfExe = "C:\Program Files\cloudflared\cloudflared.exe" }
-    Start-Process -FilePath $cfExe -ArgumentList "tunnel --url http://localhost:80 --logfile `"$logFile`"" -WindowStyle Hidden
-    for ($i = 0; $i -lt 25; $i++) {
+    Start-Process -FilePath $cfExe -ArgumentList "tunnel --edge-ip-version 4 --url http://localhost:80 --logfile `"$logFile`"" -WindowStyle Hidden
+    for ($i = 0; $i -lt 30; $i++) {
         Start-Sleep -Seconds 1
         if (Test-Path $logFile) {
             $content = Get-Content $logFile -Raw -ErrorAction SilentlyContinue
             if ($content -match "(https://[a-zA-Z0-9-]+\.trycloudflare\.com)") {
-                return $matches[1]
+                $foundUrl = $matches[1]
+                for ($j = 0; $j -lt 12; $j++) {
+                    Start-Sleep -Seconds 1
+                    $c = Get-Content $logFile -Raw -ErrorAction SilentlyContinue
+                    if ($c -match "Registered tunnel connection") {
+                        return $foundUrl
+                    }
+                }
+                return $foundUrl
             }
         }
     }

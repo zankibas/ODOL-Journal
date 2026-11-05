@@ -106,8 +106,8 @@ module.exports = async function handler(req, res) {
       }
     }
 
-    forwardHeaders['X-Original-Host'] = vercelHost;
-    forwardHeaders['X-Forwarded-Host'] = vercelHost;
+    // Note: Do NOT send X-Forwarded-Host: vercelHost to Cloudflare Tunnel,
+    // because Cloudflare edge uses X-Forwarded-Host to lookup tunnels and throws Error 1033.
     forwardHeaders['X-Forwarded-Proto'] = 'https';
 
     const upstream = await fetch(targetUrl, {
@@ -125,11 +125,18 @@ module.exports = async function handler(req, res) {
       setCookies = [upstream.headers.get('set-cookie')];
     }
     if (setCookies.length > 0) {
-      const cleanedCookies = setCookies.map((c) =>
-        c
+      const cleanedCookies = setCookies.map((c) => {
+        let cookie = c
           .replace(/;\s*domain=[^;]+/gi, '')
-          .replace(/;\s*path=[^;]+/gi, '; Path=/')
-      );
+          .replace(/;\s*path=[^;]+/gi, '; Path=/');
+        if (!/;\s*Secure/i.test(cookie)) {
+          cookie += '; Secure';
+        }
+        if (!/;\s*SameSite/i.test(cookie)) {
+          cookie += '; SameSite=Lax';
+        }
+        return cookie;
+      });
       res.setHeader('Set-Cookie', cleanedCookies);
     }
 

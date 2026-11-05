@@ -1,9 +1,9 @@
 $ErrorActionPreference = "SilentlyContinue"
-Stop-Process -Name "cloudflared" -Force
+Stop-Process -Name "cloudflared" -Force -ErrorAction SilentlyContinue
 Start-Sleep -Seconds 1
 
 $logFile = "C:\xampp\htdocs\ODOL\tunnel.log"
-if (Test-Path $logFile) { Remove-Item $logFile -Force }
+if (Test-Path $logFile) { Remove-Item $logFile -Force -ErrorAction SilentlyContinue }
 
 $cfExe = "C:\Program Files (x86)\cloudflared\cloudflared.exe"
 if (-not (Test-Path $cfExe)) {
@@ -25,10 +25,19 @@ for ($i = 0; $i -lt 30; $i++) {
 }
 
 if ($tunnelUrl) {
-    Write-Output "NEW_TUNNEL_URL: $tunnelUrl"
+    Write-Output "TUNNEL_URL: $tunnelUrl"
     $cfgPath = "C:\xampp\htdocs\ODOL\api\tunnel_config.json"
     $json = "{`n  `"tunnelUrl`": `"$tunnelUrl`"`n}"
     Set-Content -Path $cfgPath -Value $json -Encoding UTF8
+
+    for ($j = 0; $j -lt 15; $j++) {
+        Start-Sleep -Seconds 1
+        $c = Get-Content $logFile -Raw -ErrorAction SilentlyContinue
+        if ($c -match "Registered tunnel connection") {
+            Write-Output "TUNNEL_READY"
+            break
+        }
+    }
 } else {
     Write-Output "FAILED_TO_GET_TUNNEL"
 }
