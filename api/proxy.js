@@ -10,7 +10,7 @@ module.exports.config = {
 
 module.exports = async function handler(req, res) {
   try {
-    const configPath = path.join(__dirname, '_tunnel_config.json');
+    const configPath = path.join(__dirname, 'tunnel_config.json');
     let tunnelBase = '';
     if (fs.existsSync(configPath)) {
       const cfg = JSON.parse(fs.readFileSync(configPath, 'utf8'));
@@ -23,15 +23,23 @@ module.exports = async function handler(req, res) {
     }
 
     const vercelHost = req.headers['x-forwarded-host'] || req.headers.host || 'odol-journal.vercel.app';
-    let reqUrl = req.url || '/';
 
-    if (reqUrl === '/' || reqUrl === '/ODOL' || reqUrl === '/ODOL/') {
-      reqUrl = '/ODOL/index.php/journal';
-    } else if (!reqUrl.startsWith('/ODOL/')) {
-      reqUrl = '/ODOL' + (reqUrl.startsWith('/') ? '' : '/') + reqUrl;
+    // Reconstruct original path and query parameters
+    const parsedUrl = new URL(req.url || '/', `https://${vercelHost}`);
+    let targetPath = parsedUrl.searchParams.get('__p') || parsedUrl.pathname;
+    parsedUrl.searchParams.delete('__p');
+
+    // Restore OJS $$$call$$$ if rewrite collapsed $$ to $
+    targetPath = targetPath.replace(/\${1,3}call\${1,3}/g, '$$$call$$$');
+
+    if (targetPath === '/' || targetPath === '/ODOL' || targetPath === '/ODOL/' || targetPath === '/api/proxy') {
+      targetPath = '/ODOL/index.php/journal';
+    } else if (!targetPath.startsWith('/ODOL/')) {
+      targetPath = '/ODOL' + (targetPath.startsWith('/') ? '' : '/') + targetPath;
     }
 
-    const targetUrl = `${tunnelBase}${reqUrl}`;
+    const qs = parsedUrl.searchParams.toString();
+    const targetUrl = `${tunnelBase}${targetPath}${qs ? '?' + qs : ''}`;
 
     // Read raw request body for POST/PUT/PATCH/DELETE
     const chunks = [];

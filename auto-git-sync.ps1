@@ -46,7 +46,7 @@ function Ensure-BackendConnector {
     }
 
     if ($tunnelUrl) {
-        $cfgPath = "C:\xampp\htdocs\ODOL\api\_tunnel_config.json"
+        $cfgPath = "C:\xampp\htdocs\ODOL\api\tunnel_config.json"
         $newJson = "{`n  `"tunnelUrl`": `"$tunnelUrl`"`n}"
         $oldJson = if (Test-Path $cfgPath) { Get-Content $cfgPath -Raw } else { "" }
         if ($oldJson.Trim() -ne $newJson.Trim()) {

@@ -7,19 +7,15 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/api/__vercel_proxy"
+      "destination": "/api/proxy?__p=/ODOL/index.php/journal"
     },
     {
       "source": "/ODOL",
-      "destination": "/api/__vercel_proxy"
-    },
-    {
-      "source": "/ODOL/index.php/:path*",
-      "destination": "/api/__vercel_proxy"
+      "destination": "/api/proxy?__p=/ODOL/index.php/journal"
     },
     {
       "source": "/ODOL/:path*",
-      "destination": "/api/__vercel_proxy"
+      "destination": "/api/proxy?__p=/ODOL/:path*"
     }
   ]
 }
