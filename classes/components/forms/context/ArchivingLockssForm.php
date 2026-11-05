@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * @file classes/components/form/context/ArchivingLockssForm.php
+ *
+ * Copyright (c) 2014-2026 Simon Fraser University
+ * Copyright (c) 2000-2026 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * @class ArchivingLockssForm
+ *
+ * @ingroup classes_controllers_form
+ *
+ * @brief A preset form for configuring the LOCKSS and CLOCKSS settings.
+ */
+
+namespace APP\components\forms\context;
+
+use APP\journal\Journal;
+use PKP\components\forms\FieldOptions;
+use PKP\components\forms\FormComponent;
+
+class ArchivingLockssForm extends FormComponent
+{
+    public const FORM_ARCHIVING_LOCKSS = 'archivingLockss';
+    public $id = self::FORM_ARCHIVING_LOCKSS;
+    public $method = 'PUT';
+
+    /**
+     * Constructor
+     *
+     * @param string $action URL to submit the form to
+     * @param array $locales Supported locales
+     * @param Journal $context Journal or Press to change settings for
+     * @param string $lockssUrl URL to the publisher manifest page for LOCKSS
+     * @param string $clockssUrl URL to the publisher manifest page for CLOCKSS
+     */
+    public function __construct($action, $locales, $context, $lockssUrl, $clockssUrl)
+    {
+        $this->action = $action;
+        $this->locales = $locales;
+
+        $this->addField(new FieldOptions('enableLockss', [
+            'label' => __('manager.setup.lockssTitle'),
+            'options' => [
+                [
+                    'value' => true,
+                    'label' => __('manager.setup.lockssEnable', ['lockssUrl' => $lockssUrl]),
+                ],
+            ],
+            'value' => (bool) $context->getData('enableLockss'),
+        ]))
+            ->addField(new FieldOptions('enableClockss', [
+                'label' => __('manager.setup.clockssTitle'),
+                'options' => [
+                    [
+                        'value' => true,
+                        'label' => __('manager.setup.clockssEnable', ['clockssUrl' => $clockssUrl]),
+                    ],
+                ],
+                'value' => (bool) $context->getData('enableClockss'),
+            ]));
+    }
+}

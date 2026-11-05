@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "framework": null,
+  "buildCommand": "",
+  "installCommand": "",
+  "outputDirectory": "vercel_dist",
+  "rewrites": [
+    {
+      "source": "/ODOL",
+      "destination": "/ODOL/index.html"
+    },
+    {
+      "source": "/ODOL/index.php/journal",
+      "destination": "/ODOL/index.php/journal/index.html"
+    },
+    {
+      "source": "/ODOL/index.php/journal/:path*",
+      "destination": "/ODOL/index.php/journal/:path*/index.html"
+    }
+  ]
+}

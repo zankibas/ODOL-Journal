@@ -1,0 +1,33 @@
+====================================
+=== PKP TinyMCE Editor Plugin
+=== Author: Public Knowledge Project
+=== (Originally: MJ Suhonos)
+====================================
+
+About
+-----
+This plugin converts select textareas to WYSIWYG XHTML editors using the
+TinyMCE cross-browser Javascript editor (https://www.tiny.cloud/download/).  This allows
+authors, editors, etc. to easily enter valid HTML into the various forms for
+more control over the appearance of their content.
+
+License
+-------
+This plugin is licensed under the GNU General Public License v3. See the file
+LICENSE for the complete terms of this license.
+
+System Requirements
+-------------------
+This plugin introduces no additional requirements.
+
+Installation
+------------
+To install the plugin:
+ - as Manager, go into the "System Plugins" page and enable the TinyMCE plugin.
+
+Select textareas should now be enabled with the TinyMCE editor.
+
+Contact/Support
+---------------
+Please contact the Public Knowledge Project for support, bugfixes, or comments.
+https://pkp.sfu.ca

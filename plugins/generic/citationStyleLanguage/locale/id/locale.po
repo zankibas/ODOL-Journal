@@ -1,0 +1,131 @@
+# Ramli Baharuddin <ramli.baharuddin@relawanjurnal.id>, 2022.
+# Muhammad Ihlasul Amal <ihlasulamal26@gmail.com>, 2024, 2026.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2026-02-20 20:50+0000\n"
+"Last-Translator: Muhammad Ihlasul Amal <ihlasulamal26@gmail.com>\n"
+"Language-Team: Indonesian <http://translate.pkp.sfu.ca/projects/plugins/"
+"citation-style-language-plugin/id/>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.18.2\n"
+
+msgid "plugins.generic.citationStyleLanguage.settings.publisherLocation.description"
+msgstr ""
+"Beberapa format sitasi membutuhkan lokasi geografis penerbit, contoh: \""
+"London, U.K.\"."
+
+msgid "plugins.generic.citationStyleLanguage.settings.publisherLocation"
+msgstr "Lokasi Penerbit"
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationFormatsPrimaryDescription"
+msgstr "Pilih format sitasi bawaan yang ingin ditampilkan pada halaman artikel."
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationFormatsPrimary"
+msgstr "Format Sitasi Utama"
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationFormatsDescription"
+msgstr "Pilih format tambahan yang ingin ditawarkan kepada pembaca."
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationFormats"
+msgstr "Format Sitasi Tambahan"
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationDownloadsDescription"
+msgstr ""
+"Pilih format yang dapat diunduh dan ingin ditawarkan kepada pembaca. Format "
+"yang dapat diunduh biasanya digunakan untuk mengimpor ke perangkat lunak "
+"manajemen bibliografi pihak ketiga, seperti EndNote atau Zotero."
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationDownloads"
+msgstr "Format yang dapat diunduh"
+
+msgid "plugins.generic.citationStyleLanguage.download.ris"
+msgstr "Endnote/Zotero/Mendeley (RIS)"
+
+msgid "plugins.generic.citationStyleLanguage.download.bibtex"
+msgstr "BibTeX"
+
+msgid "plugins.generic.citationStyleLanguage.style.vancouver"
+msgstr "Vancouver"
+
+msgid "plugins.generic.citationStyleLanguage.style.turabian-fullnote-bibliography"
+msgstr "Turabian"
+
+msgid "plugins.generic.citationStyleLanguage.style.modern-language-association"
+msgstr "MLA"
+
+msgid "plugins.generic.citationStyleLanguage.style.ieee"
+msgstr "IEEE"
+
+msgid "plugins.generic.citationStyleLanguage.style.harvard-cite-them-right"
+msgstr "Harvard"
+
+msgid "plugins.generic.citationStyleLanguage.style.chicago-author-date"
+msgstr "Chicago"
+
+msgid "plugins.generic.citationStyleLanguage.style.associacao-brasileira-de-normas-tecnicas"
+msgstr "ABNT"
+
+msgid "plugins.generic.citationStyleLanguage.style.apa"
+msgstr "APA"
+
+msgid "plugins.generic.citationStyleLanguage.style.acs-nano"
+msgstr "ACS"
+
+msgid "plugins.generic.citationStyleLanguage.style.acm-sig-proceedings"
+msgstr "ACM"
+
+msgid "plugins.generic.citationStyleLanguage.description"
+msgstr ""
+"Izinkan pembaca memilih sitasi artikel dalam format yang didukung oleh Gaya "
+"Selingkung."
+
+msgid "plugins.generic.citationStyleLanguage.displayName"
+msgstr "Gaya Selingkung"
+
+msgid "plugins.generic.citationStyleLanguage.style.ama"
+msgstr "AMA"
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationChooseEditor"
+msgstr "Penyunting"
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationChooseTranslator"
+msgstr "Penerjemah"
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationChooseAuthor"
+msgstr "Penulis"
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationChooseChapterAuthor"
+msgstr "Penulis Bab"
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationOptionChooseEditor"
+msgstr "Pilih peran yang harus diidentifikasi sebagai penyunting."
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationOptionChooseTranslator"
+msgstr "Pilih peran yang harus diidentifikasi sebagai penerjemah."
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationOptionChooseChapterAuthor"
+msgstr "Pilih peran yang harus diidentifikasi sebagai penulis bab."
+
+msgid "plugins.generic.citationStyleLanguage.description.omp"
+msgstr ""
+"Memungkinkan pembaca mendapatkan kutipan buku yang diterbitkan dalam  format "
+"yang didukung oleh Gaya Selingkung."
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationFormatsPrimaryDescription.omp"
+msgstr ""
+"Pilih format kutipan bawaan yang ingin ditampilkan di halaman awal buku Anda."
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationUserGroups"
+msgstr "Kontributor"
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationUserGroupsDescription"
+msgstr ""
+"Dalam beberapa gaya kutipan, kontributor harus diidentifikasi secara berbeda "
+"tergantung pada perannya. Harap identifikasi peran yang sesuai."
+
+msgid "plugins.generic.citationStyleLanguage.settings.citationOptionChooseAuthor"
+msgstr "Pilih peran yang harus diidentifikasi sebagai penulis."

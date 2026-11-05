@@ -1,0 +1,37 @@
+# GitHub workflows (upstream PKP CI)
+.github/
+**/.github/
+.husky/
+**/.husky/
+
+# OJS Cache & Logs
+/cache/*.php
+/cache/*.html
+/cache/*.log
+/cache/*.txt
+/cache/opcache/*
+/cache/t_cache/*
+/cache/t_compile/*
+/cache/t_config/*
+!/cache/**/.gitkeep
+
+# Composer vendor directories (heavy third-party dependencies)
+/lib/pkp/lib/vendor/
+/plugins/**/vendor/
+
+# Heavy unused locales (keep en & id)
+/locale/*
+!/locale/en/
+!/locale/id/
+/lib/pkp/locale/*
+!/lib/pkp/locale/en/
+!/lib/pkp/locale/id/
+/plugins/**/locale/*
+!/plugins/**/locale/en/
+!/plugins/**/locale/id/
+/vercel_dist/ODOL/plugins/**/locale/*
+
+# Node / Build artifacts
+node_modules/
+.vercel/
+tunnel.log

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE install SYSTEM "../../lib/pkp/dtd/install.dtd">
+<!--
+  * dbscripts/xml/upgrade.xml
+  *
+  * Copyright (c) 2014-2026 Simon Fraser University
+  * Copyright (c) 2003-2026 John Willinsky
+  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+  *
+  * Upgrade descriptor file.
+  *
+  -->
+
+<install version="3.5.0.5">
+	<code function="checkPhpVersion" />
+
+	<upgrade minversion="2.0.0.0" maxversion="3.2.9.9">
+		<!-- OJS < 3.1.0 upgrade unsupported -->
+		<code function="abort" message="installer.unsupportedUpgradeError" />
+	</upgrade>
+
+	<!-- Install default NavigationMenus -->
+	<code function="installDefaultNavigationMenus" />
+	<code function="migrateStaticPagesToNavigationMenuItems" />
+
+	<upgrade minversion="3.3.0.16" maxversion="3.4.0.7">
+		<migration class="PKP\migration\upgrade\v3_4_0\I10249_FixProfileImageDataLoss" />
+	</upgrade>
+
+	<upgrade minversion="3.1.0.0" maxversion="3.3.9.9">
+		<migration class="APP\migration\upgrade\v3_4_0\PreflightCheckMigration" fallback="3.3.9.9" />
+		<migration class="PKP\migration\upgrade\v3_4_0\I8060_UpdateUserLocalesDefaultToEmptyArrayFromNull" />
+		<migration class="PKP\migration\upgrade\v3_4_0\I7245_UpdateUserLocaleStringToParsableJsonString" />
+		<migration class="APP\migration\upgrade\v3_4_0\I7129_IssueEntityDAORefactor" />
+		<migration class="APP\migration\upgrade\v3_4_0\I6091_AddFilterNamespaces" />
+		<migration class="APP\migration\upgrade\v3_4_0\I3573_AddPrimaryKeys" />
+		<migration class="APP\migration\upgrade\v3_4_0\I6093_AddForeignKeys" />
+		<migration class="APP\migration\upgrade\v3_4_0\MergeLocalesMigration"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\FailedJobsMigration" />
+		<migration class="PKP\migration\upgrade\v3_4_0\UpgradeMigration" />
+		<migration class="APP\migration\upgrade\v3_4_0\I6807_SetLastModified" />
+		<migration class="APP\migration\upgrade\v3_4_0\I4235_OAISetSpec" />
+		<migration class="APP\migration\upgrade\v3_4_0\I7264_UpdateEmailTemplates"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I7596_RemoveNonExpiring"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I7014_DoiMigration"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I7265_EditorialDecisions"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I7624_StrftimeDeprecation"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I7592_RemoveUnusedEmailTemplates"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I7126_Galleys"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I7190_RemoveOrphanFilters" />
+		<migration class="PKP\migration\upgrade\v3_4_0\I7190_UpdateFilters" />
+		<migration class="PKP\migration\upgrade\v3_4_0\I6895_CreateNewInstitutionsTables" />
+		<migration class="PKP\migration\upgrade\v3_4_0\I8073_RemoveNotesWithoutQueriesAndRelatedObjects" />
+		<migration class="APP\migration\upgrade\v3_4_0\I6895_Institutions" />
+		<migration class="APP\migration\upgrade\v3_4_0\I6782_OrphanedMetrics" />
+		<migration class="PKP\migration\upgrade\v3_4_0\I6782_UsageStatsSettings" />
+		<migration class="APP\migration\upgrade\v3_4_0\I6782_CreateNewMetricsTables" />
+		<migration class="APP\migration\upgrade\v3_4_0\I6782_MetricsContext" />
+		<migration class="APP\migration\upgrade\v3_4_0\I6782_MetricsIssue" />
+		<migration class="APP\migration\upgrade\v3_4_0\I6782_MetricsSubmission" />
+		<migration class="APP\migration\upgrade\v3_4_0\I6782_MetricsGeo" />
+		<migration class="APP\migration\upgrade\v3_4_0\I6782_CleanOldMetrics" />
+		<migration class="APP\migration\upgrade\v3_4_0\I6782_RemovePlugins" />
+		<migration class="PKP\migration\upgrade\v3_4_0\I7286_BatchesMigration"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I8151_ExtendSettingValues"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I8151_ExtendSettingValues"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I2890_EmailTemplatesVarcharLengthUpdate"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I2890_AddSetNullForOnDeleteToReviewRoundIdForeign"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I7901_Duplicate_OAI_IDs"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I7366_UpdateUserAPIKeySettings"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I7463_LocaleColumn"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I8093_UpdateUserGroupRelationTablesFK"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I7725_DecisionConstantsUpdate"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I4789_AddReviewerRequestResentColumns"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I7796_UpdateCrossrefSchema"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I7287_RemoveEmailTemplatesDefault"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I5716_EmailTemplateAssignments"/>
+		<migration class="APP\migration\upgrade\v3_4_0\InstallEmailTemplates"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I7874_NotificationMetadataModifiedRemove"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I7191_EditorAssignments"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I7191_InstallSubmissionHelpDefaults"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I7191_SubmissionChecklistMigration"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I7191_SubmissionProgressType"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I7191_ResubscribeSubeditors"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I8027_DoiVersioning"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I6306_EnableCategories"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I8592_SiteNotificationSubscriptions"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I6241_RequiredGenres"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I7128_SectionEntityDAORefactor" />
+		<migration class="APP\migration\upgrade\v3_4_0\I7513_DoiSettings"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I7486_RenameUnconsideredColumnToConsidered"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I7486_RemoveItemViewsTable"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I8508_ConvertCurrentLogFile"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I8866_DispatchRegionCodesFixingJobs"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I8992_FixEmptyUrlPaths"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I9040_DropSettingType"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I9039_DropDeprecatedFields"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I8933_EventLogLocalized"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I7470_FixDeprecatedFileStage"/>
+		<note file="docs/release-notes/README-3.4.0" />
+	</upgrade>
+
+	<upgrade minversion="3.3.0.0" maxversion="3.3.9.9">
+		<migration class="PKP\migration\upgrade\v3_4_0\I7249_UpdateUsersUniqueIndex"/>
+	</upgrade>
+
+	<upgrade minversion="3.1.0.0" maxversion="3.4.0.1">
+		<migration class="PKP\migration\upgrade\v3_4_0\I9136_MigrateUniqueSiteId"/>
+		<migration class="APP\migration\upgrade\v3_4_0\I9231_FixMetricsIndexes"/>
+	</upgrade>
+
+	<upgrade minversion="3.1.0.0" maxversion="3.4.0.4">
+		<migration class="PKP\migration\upgrade\v3_4_0\I9627_AddUsageStatsTemporaryTablesIndexes"/>
+		<migration class="PKP\migration\upgrade\v3_4_0\I9535_FixEmptyFileStage"/>
+	</upgrade>
+
+	<upgrade minversion="3.1.0.0" maxversion="3.4.0.5">
+		<migration class="PKP\migration\upgrade\v3_4_0\I9830_FixEmptyUserLocales"/>
+	</upgrade>
+
+	<upgrade minversion="3.4.0.0" maxversion="3.4.0.5">
+		<migration class="PKP\migration\upgrade\v3_4_0\I8592_SiteNotificationSubscriptions"/>
+	</upgrade>
+
+	<upgrade minversion="3.4.0.0" maxversion="3.4.9.9">
+		<migration class="APP\migration\upgrade\v3_4_0\I9813_QuickSubmitSubmissionProgressType"/>
+		<migration class="APP\migration\upgrade\v3_5_0\I11241_MissingDecisionConstantsUpdate"/>
+	</upgrade>
+
+	<upgrade minversion="3.1.0.0" maxversion="3.4.9.9">
+		<migration class="PKP\migration\upgrade\v3_5_0\PreflightCheckMigration" fallback="3.4.9.9" />
+		<migration class="APP\migration\upgrade\v3_5_0\I8333_AddMissingForeignKeys" />
+		<migration class="APP\migration\upgrade\v3_5_0\I9892_FloatToDecimalColumnTypeUpdate" />
+		<migration class="PKP\migration\upgrade\v3_5_0\I9895_AddAppKeyToConfigFile"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I9678_RemoveScheduledTasksTable"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\InstallEmailTemplates"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I9197_MigrateAccessKeys"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I9253_SiteAnnouncements"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I9262_Highlights"/>
+		<migration class="APP\migration\upgrade\v3_5_0\I9475_RecoverLayoutFiles"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I9462_UserUserGroupsStartEndDate"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I9552_UserGroupsMasthead"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I5504_UserGroupsSettings"/>
+		<migration class="APP\migration\upgrade\v3_5_0\I9425_SeparateUIAndSubmissionLocales"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I9709_UserUserGroupsMasthead"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I9566_UserRememberToken"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I9566_SessionUpgrade"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I9809_ReviewCancelDate"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I9860_EditorialMastheadNavMenuItem"/>
+		<migration class="APP\migration\upgrade\v3_5_0\I9937_EditorialTeamToEditorialHistory"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I10041_UserGroupsAndUserUserGroupsMastheadValues"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I9771_OrcidMigration"/>
+		<migration class="APP\migration\upgrade\v3_5_0\I10157_CreateAndMigrateIssueIdField"/>
+		<migration class="APP\migration\upgrade\v3_5_0\I5885_RenameReviewReminderSettingsName"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\COA75_AddUserRoleEndEmail"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I10738_RemoveInvalidUserGroups"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I10362_EventLogEditorNames"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I10292_RemoveControlledVocabEntrySettingType"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I10292_UpdateControlledVocabAssocId"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I10292_UpdateControlledVocabEntrySettingName"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\FilterClassNames"/>
+		<migration class="APP\migration\upgrade\v3_5_0\I10620_EditorialBoardMemberRole"/>
+		<migration class="APP\migration\upgrade\v3_5_0\I9707_WeblateUILocales"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I7135_CreateAuthorAffiliationsTables"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I7135_CreateNewRorRegistryCacheTables"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I10759_AddReviewAssignmentSettings"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I10819_OrcidOauthScopeMail"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I10359_DateConsideredToReviewAssignments"/>
+		<migration class="APP\migration\upgrade\v3_5_0\I4787_AddReviewSuggestionHelp"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I4787_InstallReviewerSuggestion"/>
+		<!-- Intentional re-run of 3.4.0 migration; see https://github.com/pkp/pkp-lib/issues/10264#issuecomment-2702413991 -->
+		<migration class="PKP\migration\upgrade\v3_4_0\I7624_StrftimeDeprecation"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I11238_PrepareDBForStructuredCitations"/>
+		<migration class="APP\migration\upgrade\v3_5_0\I10659_UpdateCrossrefSchema"/>
+		<migration class="APP\migration\upgrade\v3_5_0\I11125_UpdateEmailTemplateVariables"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I10962_UpdateEmailTemplateVariables"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I12133_FixCategorySort"/>
+		<code function="downloadIPGeoDB" />
+		<note file="docs/release-notes/README-3.5.0" />
+	</upgrade>
+
+	<upgrade minversion="3.5.0.0" maxversion="3.5.0.99">
+		<migration class="PKP\migration\upgrade\v3_5_0\I10962_UpdateEmailTemplateVariables"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I11603_AddMissingUserRoleAssignmentInvitationEmail"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I11673_AddMissingApprovalToReviewerSuggestion"/>
+		<migration class="APP\migration\upgrade\v3_5_0\I12357_FixDecisionConstantsMissedStageId"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I11800_AddUserRoleMastheadUpdateEmail"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I12608_RestoreActiveReviewerInvitations"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I12513_MissingSiteLocaleUserNames"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I12133_FixCategorySort"/>
+		<migration class="PKP\migration\upgrade\v3_5_0\I12792_FixInvitationEmailButtons"/>
+	</upgrade>
+
+	<!-- update plugin configuration - should be done as the final upgrade task -->
+	<code function="addPluginVersions" />
+</install>

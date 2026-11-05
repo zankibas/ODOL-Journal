@@ -1,0 +1,1084 @@
+# Ramli Baharuddin <ramli.baharuddin@relawanjurnal.id>, 2021.
+# Anas Fanani <anas@anasfanani.com>, 2024.
+# Maria Lamury <marialamury@gmail.com>, 2025.
+# Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>, 2025.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-19T10:49:51+00:00\n"
+"PO-Revision-Date: 2025-05-03 17:35+0000\n"
+"Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
+"Language-Team: Indonesian <http://translate.pkp.sfu.ca/projects/pkp-lib/"
+"admin/id/>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.18.2\n"
+
+msgid "admin.systemInfo.settingName"
+msgstr "Pengaturan Nama"
+
+msgid "admin.systemInfo.settingValue"
+msgstr "Pengaturan Nilai"
+
+msgid "admin.adminFunctions"
+msgstr "Fungsi Administratif"
+
+msgid "admin.deleteCache"
+msgstr "Hapus Cache"
+
+msgid "admin.deleteCache.description"
+msgstr ""
+"Hapus berkas cache dari sistem. Ini hanya boleh dilakukan di lingkungan "
+"pengembangan."
+
+msgid "admin.clearDataCache"
+msgstr "Hapus Data Cache"
+
+msgid "admin.clearTemplateCache"
+msgstr "Hapus Template Cache"
+
+msgid "admin.configFileUpdatedInstructions"
+msgstr ""
+"File konfigurasi Anda telah sukses diupdate. Jika situs Anda tidak lagi "
+"berfungsi dengan benar, Anda mungkin perlu memperbaiki konfigurasi Anda "
+"secara manual dengan mengedit <tt>config.inc.php</tt> secara langsung."
+
+msgid "admin.confirmClearTemplateCache"
+msgstr "Apakah Anda yakin ingin membersihkan template cache yang disusun?"
+
+msgid "admin.confirmExpireSessions"
+msgstr ""
+"Apakah Anda yakin ingin mengakhiri seluruh sesi pengguna? Semua pengguna "
+"yang sedang masuk ke dalam sistem akan dipaksa untuk login kembali (termasuk "
+"Anda)."
+
+msgid "admin.contentsOfConfigFile"
+msgstr "File konfigurasi isi"
+
+msgid "admin.contexts.confirmDelete"
+msgstr ""
+"Yakin ingin menghapus secara permanen {$contextName} dan seluruh isinya?"
+
+msgid "admin.currentVersion"
+msgstr "Versi Terkini"
+
+msgid "admin.dateInstalled"
+msgstr "Tanggal penginstalan"
+
+msgid "admin.displayConfigFileInstructions"
+msgstr ""
+"Isi dari konfigurasi yang sudah diupdate milik Anda ditampilkan sekarang. "
+"Untuk menerapkan perubahan konfigurasi Anda harus membuka <tt>config.inc."
+"php</tt> di text editor yang sesuai dan mengganti isinya dengan isi text "
+"editor di bawah ini."
+
+msgid "admin.displayNewSystemConfig"
+msgstr "Tampilkan Konfigurasi Baru"
+
+msgid "admin.expireSessions"
+msgstr "Akhiri Sesi Pengguna"
+
+msgid "admin.expireSessions.description"
+msgstr ""
+"Semua pengguna akan segera keluar dari aplikasi, termasuk Anda, dan harus "
+"login kembali."
+
+msgid "admin.languages.cantDisable"
+msgstr ""
+"Bahasa ini adalah bahasa utama situs web. Anda tidak bisa menonaktifkannya "
+"sebelum memilih bahasa utama lain."
+
+msgid "admin.languages.confirmSitePrimaryLocaleChange"
+msgstr ""
+"Yakin ingin mengganti bahasa utama situs web? Nama pengguna, yang diperlukan "
+"dalam bahasa utama situs, akan disalin dari bahasa utama yang ada apabila "
+"belum ditemukan."
+
+msgid "admin.languages.confirmReload"
+msgstr ""
+"Apakah Anda yakin ingin memuat ulang locale ini? Ini akan menghapus semua "
+"data spesifik-locale yang sudah ada seperti template email yang disesuaikan."
+
+msgid "admin.languages.installedLocales"
+msgstr "Locale yang diinstal"
+
+msgid "admin.languages.installLanguages"
+msgstr "Mengatur Locale"
+
+msgid "admin.languages.availableLocales"
+msgstr "Bahasa yang Tersedia"
+
+msgid "admin.languages.installLocale"
+msgstr "Install Bahasa"
+
+msgid "admin.languages.installLocales"
+msgstr "Instal"
+
+msgid "admin.languages.installNewLocales"
+msgstr "Instal Locale"
+
+msgid "admin.languages.languageSettings"
+msgstr "Pengaturan Bahasa"
+
+msgid "admin.languages.noLocalesAvailable"
+msgstr "Tidak ada bahasa tambahan yang tersedia untuk instalasi."
+
+msgid "admin.languages.reload"
+msgstr "Muat Ulang Bahasa"
+
+msgid "admin.languages.uninstall"
+msgstr "Hapus Bahasa"
+
+msgid "admin.phpInfo"
+msgstr "Informasi PHP Selengkapnya"
+
+msgid "admin.scheduledTask"
+msgstr "Tugas Terjadwal"
+
+msgid "admin.scheduledTask.startTime"
+msgstr "Proses tugas dimulai."
+
+msgid "admin.scheduledTask.stopTime"
+msgstr "Proses tugas dihentikan."
+
+msgid "admin.scheduledTask.noLog"
+msgstr "Tugas tidak menghasilkan log."
+
+msgid "admin.scheduledTask.depositDois"
+msgstr "Kirimkan DOI ke organisasi pendaftaran yang dikonfigurasi"
+
+msgid "admin.scheduledTask.downloadLog"
+msgstr ""
+"Instalasi {$softwareName} Anda secara otomatis menjalankan dan menyelesaikan "
+"tugas ini dan Anda dapat mengunduh file lognya di sini: {$url}"
+
+msgid "admin.scheduledTask.editorialReminder"
+msgstr ""
+"Kirim email ke setiap editor untuk mengingatkan mereka tentang tugas mereka "
+"yang belum terselesaikan"
+
+msgid "admin.scheduledTask.editorialReminder.logStart"
+msgstr "Mengidentifikasi editor untuk diingatkan dalam konteks {$contextId}"
+
+msgid "admin.scheduledTask.editorialReminder.logEnd"
+msgstr ""
+"Mengirimkan {$count} jobs untuk mengirim email pengingat editorial kepada "
+"pengguna {$userIds} dalam konteks {$contextId}"
+
+msgid "admin.scheduledTask.confirmClearLogs"
+msgstr "Anda yakin ingin menghapus semua log pelaksanaan tugas terjadwal?"
+
+msgid "admin.scheduledTask.clearLogs"
+msgstr "Bersihkan Log Eksekusi Tugas Terjadwal"
+
+msgid "admin.scheduledTask.clearLogs.description"
+msgstr "Hapus semua log dari pekerjaan terjadwal yang telah dilakukan."
+
+msgid "admin.scheduledTask.clearLogs.delete"
+msgstr "Hapus Log Pekerjaan"
+
+msgid "admin.scheduledTask.publishSubmissions"
+msgstr "Terbitkan naskah yang telah dijadwalkan terbit"
+
+msgid "admin.scheduledTask.reviewReminder"
+msgstr "Pengingat Review"
+
+msgid "admin.scheduledTask.statisticsReport"
+msgstr "Notifikasi Laporan Editorial"
+
+msgid "admin.scheduledTask.subscriptionExpiryReminder"
+msgstr "Pengingat masa habis berlangganan"
+
+msgid "admin.scheduledTask.removeUnvalidatedExpiredUsers"
+msgstr "Hapus pengguna lama yang tidak divalidasi"
+
+msgid "admin.scheduledTask.removeFailedJobs"
+msgstr "Hapus pekerjaan yang sebelumnya gagal dari daftar pekerjaan yang gagal."
+
+msgid "admin.scheduledTask.processQueueJobs"
+msgstr "Proses pekerjaan yang tertunda dalam antrian"
+
+msgid "admin.scheduledTask.updateGeoDB"
+msgstr "Perbaharui database DB-IP city lite"
+
+msgid "admin.scheduledTask.updateGeoDB.fileRename.error"
+msgstr ""
+"Penggantian nama file database DB-IP city lite {$sourceFilename} to "
+"{$targetFilename} gagal."
+
+msgid "admin.scheduledTask.usageStatsLoader"
+msgstr "Beban loader file statistik pemakaian"
+
+msgid "admin.scheduledTask.usageStatsLoader.processingPathNotEmpty"
+msgstr ""
+"Direktori {$directory} tidak kosong. Ini mengindikasikan proses yang telah "
+"gagal sebelumnya, atau proses yang berlangsung bersamaan. File ini akan "
+"diproses secara otomatis."
+
+msgid "admin.job.processLogFile.openFileFailed"
+msgstr "File {$file} tidak bisa dibuka sehingga ditolak."
+
+msgid "admin.scheduledTask.usageStatsLoader.veryOldLogFile"
+msgstr ""
+"File {$file} adalah format file log yang lama yang tidak pernah diproses dan "
+"akan dipindahkan pada tahap direktori."
+
+msgid "admin.scheduledTask.usageStatsLoader.monthExists"
+msgstr ""
+"File {$file} log dilewati karena statistik dari bulan tersebut sudah "
+"dihitung. Untuk menghitung ulang statistik dari bulan sebelumnya, anda harus "
+"menyimpan semua file log dari bulan tersebut dan menggunakan alat CLI untuk "
+"memproses statistik."
+
+msgid "admin.job.processLogFile.wrongLoglineFormat"
+msgstr ""
+"Baris {$lineNumber} pada file {$file} log ada di dalam format yang salah "
+"sehingga akan dilewati."
+
+msgid "admin.job.processLogFile.invalidLogEntry"
+msgstr ""
+"Entri log yang tidak sah pada baris {$lineNumber} pada file log {$file}: "
+"{$error}"
+
+msgid "admin.job.processLogFile.invalidLogEntry.time"
+msgstr "Time bukan merupakan tanggal yang benar."
+
+msgid "admin.job.processLogFile.invalidLogEntry.contextId"
+msgstr "Context ID bukan sebuah integer."
+
+msgid "admin.job.processLogFile.invalidLogEntry.submissionId"
+msgstr "Submission ID bukan sebuah integer."
+
+msgid "admin.job.processLogFile.invalidLogEntry.representationId"
+msgstr "Representation ID bukan sebuah integer."
+
+msgid "admin.job.processLogFile.invalidLogEntry.assocType"
+msgstr "Assoc type tidak didukung."
+
+msgid "admin.job.processLogFile.invalidLogEntry.fileType"
+msgstr "File type tidak didukung."
+
+msgid "admin.job.processLogFile.invalidLogEntry.country"
+msgstr ""
+"Country tidak terdiri dari string yang panjangnya maksimal dua karakter "
+"alfabet."
+
+msgid "admin.job.processLogFile.invalidLogEntry.region"
+msgstr ""
+"Region tidak terdiri dari string yang panjangnya maksimal tiga karakter "
+"alfanumerik."
+
+msgid "admin.job.processLogFile.invalidLogEntry.institutionIds"
+msgstr "Institution ID bukan sebuah array."
+
+msgid "admin.job.processLogFile.insertError"
+msgstr ""
+"Terjadi kesalahan pada saat memproses file log {$file} pada baris "
+"{$lineNumber}: {$msg}"
+
+msgid "admin.scheduledTask.usageStatsLoader.jobDispatched"
+msgstr ""
+
+msgid "admin.server.apacheVersion"
+msgstr "Versi Apache"
+
+msgid "admin.server.dbDriver"
+msgstr "Driver basis data"
+
+msgid "admin.server.dbVersion"
+msgstr "Versi server database"
+
+msgid "admin.serverInformation"
+msgstr "Informasi Server"
+
+msgid "admin.server.phpVersion"
+msgstr "Versi PHP"
+
+msgid "admin.server.platform"
+msgstr "Platform OS"
+
+msgid "admin.settings"
+msgstr "Pengaturan"
+
+msgid "admin.settings.about"
+msgstr "Deskripsi Situs"
+
+msgid "admin.settings.enableBulkEmails.label"
+msgstr "Email Sampah"
+
+msgid "admin.settings.contactEmail"
+msgstr "Email Kontak Utama"
+
+msgid "admin.settings.contactName"
+msgstr "Nama Kontak Utama"
+
+msgid "admin.settings.introduction"
+msgstr "Pendahuluan"
+
+msgid "admin.settings.minPasswordLength"
+msgstr "Panjang Kata Sandi Min"
+
+msgid "admin.settings.restrictBulkEmails"
+msgstr "Batasi Email Massal"
+
+msgid "admin.settings.disableBulkEmailRoles.label"
+msgstr "Nonaktifkan Peran"
+
+msgid "admin.settings.disableBulkEmailRoles.adminOnly"
+msgstr "Hanya administrator yang dapat mengubah pengaturan ini."
+
+msgid "admin.settings.siteLanguage"
+msgstr "Bahasa Situs"
+
+msgid "admin.settings.siteStyleSheetInvalid"
+msgstr "Format Stylesheet situs tidak valid. Format yang diterima adalah .css."
+
+msgid "admin.settings.siteStyleSheet"
+msgstr "Style Sheet"
+
+msgid "admin.settings.siteLogo"
+msgstr "Logo Situs"
+
+msgid "admin.settings.siteTitle"
+msgstr "Nama Situs"
+
+msgid "admin.settings.siteTheme"
+msgstr "Tema Situs"
+
+msgid "admin.siteAdmin"
+msgstr "Administrasi Situs"
+
+msgid "admin.siteManagement"
+msgstr "Manajemen Situs"
+
+msgid "admin.siteSettings"
+msgstr "Pengaturan Situs"
+
+msgid "admin.siteSetup"
+msgstr "Pengaturan Situs"
+
+msgid "admin.systemConfigFileReadError"
+msgstr ""
+"File konfigurasi <tt>config.inc.php</tt> tidak ada, tidak terbaca, atau "
+"invalid."
+
+msgid "admin.systemInformation"
+msgstr "Informasi Sistem"
+
+msgid "admin.systemInformation.description"
+msgstr ""
+"Lihat informasi tentang versi dan pengaturan konfigurasi pada aplikasi dan "
+"server."
+
+msgid "admin.systemInformation.view"
+msgstr "Lihat Informasi Sistem"
+
+msgid "admin.versionBuild"
+msgstr "Tubuh"
+
+msgid "admin.version.checkForUpdates"
+msgstr "Cek untuk update"
+
+msgid "admin.version.downloadPackage"
+msgstr "Unduh"
+
+msgid "admin.version.downloadPatch"
+msgstr "Unduh Patch"
+
+msgid "admin.versionHistory"
+msgstr "Sejarah Versi"
+
+msgid "admin.version.latest"
+msgstr "Versi Terbaru"
+
+msgid "admin.versionMajor"
+msgstr "Mayor"
+
+msgid "admin.versionMinor"
+msgstr "Minor"
+
+msgid "admin.version.moreInfo"
+msgstr "Informasi lebih lanjut"
+
+msgid "admin.versionRevision"
+msgstr "Revisi"
+
+msgid "admin.version.updateAvailable"
+msgstr "Versi yang telah diupdate sudah tersedia"
+
+msgid "admin.version.upToDate"
+msgstr "Sistem Anda up-to-date"
+
+msgid "admin.version"
+msgstr "Versi"
+
+msgid "admin.fileLoader.wrongBasePathLocation"
+msgstr "Alamat utama {$path} harus berada di direktori file publik."
+
+msgid "admin.fileLoader.pathNotAccessible"
+msgstr "Folder {$path} bukan sebuah direktori atau tidak dapat dibaca."
+
+msgid "admin.fileLoader.moveFileFailed"
+msgstr ""
+"File {$filename} tidak bisa dipindahkan dari {$currentFilePath} ke "
+"{$destinationPath}"
+
+msgid "admin.fileLoader.fileProcessed"
+msgstr "File {$filename} telah diproses dan disimpan."
+
+msgid "admin.fileLoader.emailSubject"
+msgstr "Pemuat File"
+
+msgid "admin.error.gzDecompressFile.gzopen"
+msgstr ""
+"File tidak dapat didekompresi. Sumber gz-file {$filePath} tidak dapat dibuka "
+"dengan gzopen."
+
+msgid "admin.error.gzDecompressFile.fopen"
+msgstr ""
+"File tidak dapat didekompresi. File tujuan {$filePath} tidak dapat dibuka "
+"menggunakan fopen."
+
+msgid "admin.error.gzDecompressFile.gzread"
+msgstr ""
+"File tidak dapat didekompresi. Sumber gz-file {$file} tidak dapat dibaca "
+"menggunakan gzread."
+
+msgid "admin.error.gzDecompressFile.fwrite"
+msgstr ""
+"File tidak dapat didekompresi. File tujuan {$filePath} tidak dapat ditulis "
+"menggunakan fwrite."
+
+msgid "admin.error.gzDecompressFile.fclose"
+msgstr ""
+"File tidak dapat didekompresi. File tujuan yang dibuka {$filePath} tidak "
+"dapat ditutup menggunakan fclose."
+
+msgid "admin.error.gzDecompressFile.gzclose"
+msgstr ""
+"File tidak dapat didekompresi. Sumber gz-file yang dibuka {$filePath} tidak "
+"dapat ditutup menggunakan gzclose."
+
+msgid "admin.error.gzDecompressFile.unlink"
+msgstr ""
+"File tidak dapat didekompresi. Sumber gz-file yang didekompresi {$filePath} "
+"tidak dapat dihilangkan dengan unlink."
+
+msgid "admin.error.gzCompressFile.gzopen"
+msgstr ""
+"File tidak dapat didekompresi. File tujuan gz-file {$filePath} tidak dapat "
+"dibuka dengan gzopen."
+
+msgid "admin.error.gzCompressFile.fopen"
+msgstr ""
+"File tidak dapat didekompresi. File sumber {$filePath} tidak dapat dibuka "
+"dengan fopen."
+
+msgid "admin.error.gzCompressFile.fread"
+msgstr ""
+"File tidak dapat didekompresi. File sumber {$filePath} tidak dapat dibaca "
+"dengan fread."
+
+msgid "admin.error.gzCompressFile.gzwrite"
+msgstr ""
+"File tidak dapat didekompresi. File tujuan gz-file {$filePath} tidak dapat "
+"ditulis dengan gzwrite."
+
+msgid "admin.error.gzCompressFile.fclose"
+msgstr ""
+"File tidak dapat didekompresi. File sumber yang dibuka {$filePath} tidak "
+"dapat ditutup menggunakan fclose."
+
+msgid "admin.error.gzCompressFile.gzclose"
+msgstr ""
+"File tidak dapat didekompresi. gz-file tujuan yang sudah dibuka tidak dapat "
+"ditutup menggunakan gzclose."
+
+msgid "admin.error.gzCompressFile.unlink"
+msgstr ""
+"File tidak dapat didekompresi. Sumber file yang telah terkompresi {$filePath}"
+" tidak dapat dihilangkan menggunakan unlink."
+
+msgid "admin.languages.noLocalesToDownload"
+msgstr "Tidak ada bahasa yang dapat diunduh."
+
+msgid "admin.cli.tool.usage.title"
+msgstr "Penggunaan:"
+
+msgid "admin.cli.tool.usage.parameters"
+msgstr "perintah [argumen]"
+
+msgid "admin.cli.tool.available.commands"
+msgstr "Tersedia perintah untuk `{$namespace}` namespace:"
+
+msgid "admin.cli.tool.jobs.maintenance.message"
+msgstr ""
+"Tidak dapat menjalankan pekerjaan dalam antrian karena mode pemeliharaan "
+"aplikasi diaktifkan."
+
+msgid "admin.cli.tool.jobs.available.options.list.description"
+msgstr ""
+"Daftar semua pekerjaan dalam antrian. Jika anda ingin membaginya dalam "
+"beberapa halaman, gunakan parameter --page= and --perPage= . Masukkan flag --"
+"failed untuk mencantumkan pekerjaan yang gagal."
+
+msgid "admin.cli.tool.jobs.available.options.purge.description"
+msgstr ""
+"Bersihkan pekerjaan dalam antrian tertentu berdasarkan IDnya. Jika anda "
+"ingin membersihkan semua, masukkan parameter --all. Jika anda ingin "
+"membersihkan semua dari antrian tertentu, masukkan parameter --queue="
+
+msgid "admin.cli.tool.jobs.available.options.test.description"
+msgstr ""
+"Tambahkan pekerjaan pengujian ke antrian pengujian. Gunakan pilihan "
+"parameter --only= dan masukkan 'failed' atau 'sukses' untuk mengirimkan "
+"pekerjaan yang gagal atau berhasil."
+
+msgid "admin.cli.tool.jobs.available.options.work.description"
+msgstr ""
+"Jalankan proses daemon worker yang tak terbatas yang akan terus memproses "
+"pekerjaan. Gunakan flag --help untuk melihat opsi yang tersedia yang terkait "
+"dengan perintah ini."
+
+msgid "admin.cli.tool.jobs.available.options.failed.description"
+msgstr ""
+"Daftar semua pekerjaan yang gagal. Atur parameter --queue=QUEUE_NAME and --"
+"connection=CONNECTION_NAME untuk menyaring daftar. Juga masukkan parameter/"
+"flag --redispatch dan --clear untuk mengirimkan kembali ke daftar atau "
+"membersihkan semua/pekerjaan tertentu yang gagal."
+
+msgid "admin.cli.tool.jobs.available.options.run.description"
+msgstr ""
+"Penugasan pekerjaan yang tersedia dalam antrian. Untuk menugaskan sebuah "
+"pekerjaan pada antrian tertentu, masukkan parameter --queue=QUEUE_NAME. "
+"Gunakan --test untuk menjalankan pekerjaan pengujian dan --once untuk "
+"berhenti sesudah satu pekerjaan."
+
+msgid "admin.cli.tool.jobs.available.options.run.completed.description"
+msgstr ""
+"Berhasil menjalankan {$jobCount} pekerjaan pada antrian yang dinamakan "
+"{$queueName}."
+
+msgid "admin.cli.tool.jobs.available.options.run.empty.description"
+msgstr ""
+"Tidak ada pekerjaan yang tersedia untuk menjalankan antrian yang dinamakan "
+"{$queueName}."
+
+msgid "admin.cli.tool.jobs.available.options.total.description"
+msgstr ""
+"Menampilkan total pekerjaan dalam antrian. Masukkan flag --failed untuk "
+"melihat total pekerjaan yang gagal."
+
+msgid "admin.cli.tool.jobs.available.options.help.description"
+msgstr "Menampilkan penggunaan perintah pekerjaan"
+
+msgid "admin.cli.tool.jobs.available.options.usage.description"
+msgstr "Menampilkan parameter penggunaan pekerjaan"
+
+msgid "admin.cli.tool.jobs.empty.option"
+msgstr "Pilihan tidak boleh kosong! Gunakan metode penggunaan."
+
+msgid "admin.cli.tool.jobs.queued.jobs.failed.title"
+msgstr "Pekerjaan dalam antrian gagal"
+
+msgid "admin.cli.tool.jobs.queued.jobs.title"
+msgstr "Pekerjaan dalam antrian"
+
+msgid "admin.cli.tool.jobs.queued.jobs.fields.id"
+msgstr "ID"
+
+msgid "admin.cli.tool.jobs.queued.jobs.fields.queue"
+msgstr "Antrian"
+
+msgid "admin.cli.tool.jobs.queued.jobs.fields.connection"
+msgstr "Koneksi"
+
+msgid "admin.cli.tool.jobs.queued.jobs.fields.job.display.name"
+msgstr "Nama Tampilan Pekerjaan"
+
+msgid "admin.cli.tool.jobs.queued.jobs.fields.attempts"
+msgstr "Usaha"
+
+msgid "admin.cli.tool.jobs.queued.jobs.fields.reserved.at"
+msgstr "Direservasi Pada"
+
+msgid "admin.cli.tool.jobs.queued.jobs.fields.available.at"
+msgstr "Tersedia Pada"
+
+msgid "admin.cli.tool.jobs.queued.jobs.fields.created.at"
+msgstr "Dibuat Pada"
+
+msgid "admin.cli.tool.jobs.queued.jobs.fields.failed.at"
+msgstr "Gagal Pada"
+
+msgid "admin.cli.tool.jobs.queued.jobs.fields.exception"
+msgstr "Pesan Pengecualian"
+
+msgid "admin.cli.tool.jobs.pagination"
+msgstr "Paginasi"
+
+msgid "admin.cli.tool.jobs.pagination.current"
+msgstr "Saat ini"
+
+msgid "admin.cli.tool.jobs.pagination.previous"
+msgstr "Sebelum"
+
+msgid "admin.cli.tool.jobs.pagination.next"
+msgstr "Berikutnya"
+
+msgid "admin.cli.tool.jobs.purge.without.id"
+msgstr ""
+"Anda harus memasukkan setidaknya sebuah Job ID, '--all' atau '--queue=' "
+"untuk menggunakan perintah ini"
+
+msgid "admin.cli.tool.jobs.test.job.failed.dispatch.message"
+msgstr ""
+"Pekerjaan pengujian yang gagal dikirim dalam antrian bernama {$queueName}"
+
+msgid "admin.cli.tool.jobs.test.job.success.dispatch.message"
+msgstr ""
+"Pekerjaan pengujian yang sukses dikirim dalam antrian bernama{$queueName}"
+
+msgid "admin.cli.tool.jobs.test.invalid.option"
+msgstr ""
+"Pilihan pekerjaan pengujian tidak sah. Hanya dapat memilih 'failed' atau "
+"'success' untuk pilihan '--only='."
+
+msgid "admin.cli.tool.jobs.purge.invalid.id"
+msgstr "Job ID tidak sah"
+
+msgid "admin.cli.tool.jobs.purge.successful"
+msgstr "Pekerjaan dihapus!"
+
+msgid "admin.cli.tool.jobs.purge.impossible.to.purge.empty"
+msgstr "Tidak ada pekerjaan yang ditemukan untuk dihapus."
+
+msgid "admin.cli.tool.jobs.purge.impossible.to.purge.all"
+msgstr "Tidak memungkinkan untuk menghapus semua pekerjaan."
+
+msgid "admin.cli.tool.jobs.purge.successful.all"
+msgstr "Menghapus semua pekerjaan!"
+
+msgid "admin.cli.tool.jobs.failed.clear.successful"
+msgstr ""
+"{$jobsCount} pekerjaan yang gagal dihapus dari daftar gagal dengan sukses."
+
+msgid "admin.cli.tool.jobs.failed.redispatch.successful"
+msgstr ""
+"{$jobsCount} pekerjaan yang dikirim ulang dengan sukses kembali ke daftar "
+"antrian."
+
+msgid "admin.cli.tool.jobs.total.failed.jobs"
+msgstr "Kami memiliki {$total} pekerjaan yang gagal"
+
+msgid "admin.cli.tool.jobs.total.jobs"
+msgstr "Kami mempunyai {$total} pekerjaan dalam daftar antrian"
+
+msgid "admin.cli.tool.jobs.option.doesnt.exists"
+msgstr "Pilihan {$option} tidak ada."
+
+msgid "admin.cli.tool.jobs.mean.those"
+msgstr ""
+"Apakah yang anda maksud merupakan salah satu dari beberapa pilihan berikut?"
+
+msgid "admin.jobs.totalCount"
+msgstr ""
+"Terdapat total dari <strong>{$total}</strong> pekerjaan pada daftar antrian"
+
+msgid "admin.jobs.failed.totalCount"
+msgstr "Terdapat total <strong>{$total}</strong> pekerjaan yang gagal."
+
+msgid "admin.jobs.viewQueuedJobs"
+msgstr "Lihat daftar antrian pekerjaan"
+
+msgid "navigation.tools.jobs"
+msgstr "Pekerjaan"
+
+msgid "navigation.tools.jobs.failed"
+msgstr "Pekerjaan yang gagal"
+
+msgid "navigation.tools.jobs.failed.details"
+msgstr "Detail Pekerjaan yang Gagal"
+
+msgid "navigation.tools.jobs.description"
+msgstr ""
+"Lihat semua daftar antrian pekerjaan pada sistem dan melacak upaya yang "
+"gagal."
+
+msgid "navigation.tools.jobs.view"
+msgstr "Lihat Pekerjaan"
+
+msgid "navigation.tools.jobs.failed.view"
+msgstr "Lihat Pekerjaan yang Gagal"
+
+msgid "navigation.tools.job.failed.details.view"
+msgstr "Lihat Detail Pekerjaan yang Gagal:{$id}"
+
+msgid "admin.job.failed.list.attribute"
+msgstr "Atribut"
+
+msgid "admin.job.failed.list.attribute.value"
+msgstr "Nilai Atribut"
+
+msgid "admin.jobs.list.id"
+msgstr "ID"
+
+msgid "admin.jobs.list.displayName"
+msgstr "Pekerjaan"
+
+msgid "admin.jobs.list.queue"
+msgstr "Antrian"
+
+msgid "admin.jobs.list.connection"
+msgstr "Koneksi"
+
+msgid "admin.jobs.list.attempts"
+msgstr "Usaha"
+
+msgid "admin.jobs.list.createdAt"
+msgstr "Dibuat Pada"
+
+msgid "admin.jobs.list.failedAt"
+msgstr "Gagal Pada"
+
+msgid "admin.jobs.list.payload"
+msgstr "Muatan"
+
+msgid "admin.jobs.list.exception"
+msgstr "Pengecualian"
+
+msgid "admin.jobs.list.actions"
+msgstr "Tindakan"
+
+msgid "admin.jobs.failedAt"
+msgstr "Dibuat pada {$failedAt}"
+
+msgid "admin.jobs.createdAt"
+msgstr "Dibuat pada {$createdAt}"
+
+msgid "admin.jobs.failed.action.redispatch"
+msgstr "Coba Lagi"
+
+msgid "admin.jobs.failed.action.redispatch.all"
+msgstr "Antrian ulang Semua Pekerjaan yang Gagal"
+
+msgid "admin.job.compileMetrics.returnToStaging.error"
+msgstr ""
+"Pekerjaan yang memuat data statistik penggunaan dari file {$file} gagal, dan "
+"file tidak dapat dipindahkan dari {$archivedFilePath} ke {$stagingPath}."
+
+msgid "admin.job.compileMetrics.error"
+msgstr ""
+"Pekerjaan yang memuat data statistik penggunaan dari file {$file} gagal. "
+"File telah dipindahkan ke direktori tahapan."
+
+msgid "admin.settings.statistics.collection"
+msgstr "Koleksi Data"
+
+msgid "admin.settings.statistics.collection.description"
+msgstr "Konfigurasikan tipe statistik penggunaan apa yang harus dikumpulkan."
+
+msgid "admin.settings.statistics.storage"
+msgstr "Penyimpanan Data"
+
+msgid "admin.settings.statistics.storage.description"
+msgstr "Konfigurasikan statistik penggunaan apa yang harus disimpan di server."
+
+msgid "admin.settings.statistics.sushi"
+msgstr "Protokol Sushi"
+
+msgid "admin.settings.statistics.sushi.description"
+msgstr ""
+"Konfigurasikan protokol <a href=\"https://www.projectcounter.org/"
+"counter-sushi/\">COUNTER 5 SUSHI</a>, format yang diakui industri untuk "
+"penyebaran statistik penggunaan."
+
+msgid "admin.settings.statistics.keepDaily"
+msgstr "Statistik Bulanan atau Harian"
+
+msgid "admin.settings.statistics.keepDaily.description"
+msgstr ""
+"Apakah akan melacak atau tidak statistik penggunaan harian atau bulanan. "
+"Pengecekan statistik harian dapat meningkatkan ukuran database anda secara "
+"signifikan."
+
+msgid "admin.settings.statistics.keepDaily.keep"
+msgstr "Pengecekan statistik harian dan bulanan"
+
+msgid "admin.settings.statistics.keepDaily.discard"
+msgstr "Hanya mengecek statistik bulanan"
+
+msgid "admin.settings.statistics.compressStatsLogs.label"
+msgstr "Mengkompresi Logs"
+
+msgid "admin.settings.statistics.compressStatsLogs.description"
+msgstr ""
+"Statistik dihasilkan dari akses file log yang dipindahkan ke <code>{$path}</"
+"code> sesudah diproses. Apakah file log dikompresikan ke file <code>.gz</"
+"code> sesudah diproses? Mengkompresikan file log mungkin menghemat ruang "
+"disk pada server."
+
+msgid "admin.settings.statistics.compressStatsLogs.default"
+msgstr "Tinggalkan file log di tempatnya"
+
+msgid "admin.settings.statistics.compressStatsLogs.compress"
+msgstr "Kompresikan file log"
+
+msgid "admin.settings.statistics.publicSushiApi.private"
+msgstr "Akses terbatas ke API statistik COUNTER SUSHI ke manajer dan admin"
+
+msgid "admin.settings.statistics.sushiPlatform"
+msgstr "Platform"
+
+msgid "admin.settings.statistics.sushiPlatform.description"
+msgstr ""
+"Berdasarkan protokol COUNTER SUSHI, setiap laporan statistik harus "
+"mengidentifikasi \"platform\" yang menyediakan statistik. Secara default, "
+"jurnal akan ditunjuk sebagai platform untuk seluruh statistik. Namun, jika "
+"semua jurnal pada situs diterbitkan, dimiliki atau dijalankan oleh provider "
+"yang sama, anda dapat menunjuk situs tersebut sebagai platform."
+
+msgid "admin.settings.statistics.sushiPlatform.sushiPlatformID"
+msgstr "ID Platform"
+
+msgid "admin.settings.statistics.sushiPlatform.sushiPlatformID.description"
+msgstr ""
+"Cara mengidentifikasi platform ini dalam laporan COUNTER SUSHI. ID platform "
+"harus terdiri dari 17 karakter atau kurang dan boleh berisi huruf (a–z, A–Z)"
+", angka (0–9), garis bawah (_), titik (.), dan garis miring (/). ID platform "
+"digunakan dalam beberapa kolom dan harus sesingkat mungkin namun tetap mudah "
+"dikenali. ID platform biasanya berdasarkan nama penerbit atau platform, nama "
+"domain, atau singkatan unik yang terkenal."
+
+msgid "admin.settings.statistics.sushiPlatform.sushiPlatformID.required"
+msgstr ""
+"ID platform diharuskan ketika situs diidentifikasi sebagai platform SUSHI."
+
+msgid "admin.cli.tool.jobs.work.options.title"
+msgstr "Pilihan perintah pekerjaan"
+
+msgid "admin.cli.tool.jobs.work.options.usage"
+msgstr "penggunaan : [--options1 --options2= ...]"
+
+msgid "admin.cli.tool.jobs.work.options.description"
+msgstr "Pilihan yang tersedia untuk perintah pekerjaan"
+
+msgid "admin.cli.tool.jobs.work.option.connection.description"
+msgstr "Nama koneksi antrian untuk bekerja [default : '{$default}']"
+
+msgid "admin.cli.tool.jobs.work.option.queue.description"
+msgstr "Nama koneksi antrian untuk bekerja [default : '{$default}']"
+
+msgid "admin.cli.tool.jobs.work.option.name.description"
+msgstr "Nama pekerjaan [default : '{$default}']"
+
+msgid "admin.cli.tool.jobs.work.option.backoff.description"
+msgstr ""
+"Jumlah detik untuk menunggu sebelum mencoba kembali pekerjaan yang menemukan "
+"pengecualian yang tidak tertangkap[default : '{$default}']"
+
+msgid "admin.cli.tool.jobs.work.option.memory.description"
+msgstr "Memori terbatas pada megabit [default : '{$default}']"
+
+msgid "admin.cli.tool.jobs.work.option.timeout.description"
+msgstr ""
+"Jumlah detik yang dapat dijalankan oleh proses anak[default : '{$default}']"
+
+msgid "admin.cli.tool.jobs.work.option.sleep.description"
+msgstr ""
+"Jumlah detik untuk nonaktif ketika tidak ada pekerjaan yang tersedia[default "
+": '{$default}']"
+
+msgid "admin.cli.tool.jobs.work.option.tries.description"
+msgstr ""
+"Jumlah waktu untuk mencoba pekerjaan sebelum masuk[default : '{$default}']"
+
+msgid "admin.cli.tool.jobs.work.option.force.description"
+msgstr ""
+"Memaksa pekerja untuk menjalankan dalam mode perbaikan[default : "
+"'{$default}']"
+
+msgid "admin.cli.tool.jobs.work.option.stopWhenEmpty.description"
+msgstr "Berhenti ketika antrian kosong[default : '{$default}']"
+
+msgid "admin.cli.tool.jobs.work.option.maxJobs.description"
+msgstr "Jumlah pekerjaan yang diproses sebelum berhenti[default : '{$default}']"
+
+msgid "admin.cli.tool.jobs.work.option.maxTime.description"
+msgstr ""
+"Jumlah maksimal detik pekerja yang harus dijalankan[default : '{$default}']"
+
+msgid "admin.cli.tool.jobs.work.option.rest.description"
+msgstr "Jumlah detik untuk jeda antara pekerjaan[default : '{$default}']"
+
+msgid "admin.cli.tool.jobs.work.option.test.description"
+msgstr "Jalankan worker deamon untuk antrian pengujian"
+
+#~ msgid "admin.saveSystemConfig"
+#~ msgstr "Simpan Konfigurasi"
+
+#~ msgid "admin.serverInformationDescription"
+#~ msgstr ""
+#~ "Informasi mengenai sistem operasi dan versi perangkat lunak server. Klik "
+#~ "<span class=\"highlight\">Informasi Detail PHP</span> untuk melihat "
+#~ "detail konfigurasi server PHP."
+
+#~ msgid "admin.settings.passwordCharacters"
+#~ msgstr "Karakter"
+
+msgid "admin.scheduledTask.UpdateRorRegistryDataset"
+msgstr "Perbarui cache dataset pendaftaran ROR"
+
+msgid "admin.settings.sharedReviewerStatistics"
+msgstr "Statistik reviewer"
+
+msgid "admin.settings.sharedReviewerStatistics.description"
+msgstr ""
+"Pada instalasi multi-konteks, statistik reviewer, seperti jumlah review yang "
+"dikirim, dapat ditampilkan secara individual untuk setiap konteks atau "
+"dikumpulkan secara kolektif."
+
+msgid "admin.settings.sharedReviewerStatistics.disable"
+msgstr "Nonaktifkan statistik reviewer yang dikumpulkan"
+
+msgid "admin.fileLoader.fileDispatched"
+msgstr "File {$filename} dipindahkan ke folder pengiriman."
+
+msgid "admin.cli.tool.jobs.available.options.restart.confirm"
+msgstr ""
+"Workers akan berhenti setelah menyelesaikan eksekusi dari pekerjaan sekarang."
+
+msgid "admin.cli.tool.jobs.available.options.restart.description"
+msgstr ""
+"Jalankan kembali daftar antrian worker daemons setelah pekerjaan yang sedang "
+"dilakukan sekarang."
+
+msgid "admin.cli.tool.jobs.sandbox.message"
+msgstr ""
+"Tidak dapat menjalankan pekerjaan dalam antrian karena mode aplikasi sandbox "
+"diaktifkan."
+
+msgid "admin.job.archiveLogFile.error"
+msgstr ""
+"File {$file} tidak dapat dipindahkan dari {$dispatchFilePath} ke "
+"{$archivedFilePath}."
+
+msgid "admin.job.processLogFile.fileNotFound"
+msgstr "File {$file} tidak ada."
+
+msgid "admin.cli.tool.appKey.mean.those"
+msgstr "Apakah yang anda maksud terdapat pada salah satu dari pilihan berikut?"
+
+msgid "admin.cli.tool.appKey.warning.replaceValidKey"
+msgstr ""
+"APP Key yang sah telah diatur pada config file. Jika kita timpa, berikan "
+"bendera----force with the command."
+
+msgid "admin.cli.tool.appKey.success.writtenToConfig"
+msgstr "Pengaturan App key sukses pada config fiile."
+
+msgid "admin.cli.tool.scheduler.tasks.notFound"
+msgstr "Tidak ada pekerjaan terjadwal yang ditemukan."
+
+msgid "admin.cli.tool.schedule.sandbox.message"
+msgstr ""
+"Tidak dapat menjalankan tugas terjadwal karena aplikasi sandbox diaktifkan."
+
+msgid "admin.cli.tool.scheduler.options.usage.description"
+msgstr "Tampilkan parameter penggunaan Scheduler."
+
+msgid "admin.scheduledTask.removeExpiredInvitations"
+msgstr ""
+"Kirim pekerjaan untuk menghapus undangan yang kedaluwarsa secara otomatis"
+
+msgid "admin.settings.statistics.sushiPlatform.isSiteSushiPlatform"
+msgstr "Menggunakan situs ini sebagai platform untuk seluruh jurnal."
+
+msgid "admin.cli.tool.appKey.options.usage.description"
+msgstr "Menampilkan parameter penggunaan AppKey"
+
+msgid "admin.cli.tool.appKey.options.validate.description"
+msgstr "Memvalidasi app key terkini jika ditemukan pada config file"
+
+msgid "admin.cli.tool.appKey.options.configure.description"
+msgstr "Tambahkan variabel app_key config pada config.inc.php file."
+
+msgid "admin.cli.tool.appKey.show"
+msgstr "Menghasilkan App Key: {$appKey}"
+
+msgid "admin.cli.tool.appKey.error.missingAppKey"
+msgstr "Tidak ada app key yang diatur pada config file."
+
+msgid "admin.cli.tool.scheduler.run.prompt"
+msgstr "Perintah apa yang ingin anda jalankan?"
+
+msgid "admin.cli.tool.scheduler.maintenance.message"
+msgstr ""
+"Tidak dapat menjalankan tugas terjadwal karena pemeliharaan aplikasi "
+"diaktifkan."
+
+msgid "admin.cli.tool.scheduler.mean.those"
+msgstr "Apa yang anda maksudkan ada pada salah satu dari pilihan berikut?"
+
+msgid "admin.cli.tool.scheduler.options.work.running.info"
+msgstr "Menjalankan tugas terjadwal setiap menit."
+
+msgid "admin.cli.tool.scheduler.tasks.empty"
+msgstr "Tidak ada tugas terjadwal yang terdaftar."
+
+msgid "admin.cli.tool.appKey.success.valid"
+msgstr "App key yang sah diatur pada config file"
+
+msgid "admin.cli.tool.scheduler.options.list.description"
+msgstr "Daftarkan seluruh tugas terjadwal."
+
+msgid "admin.cli.tool.scheduler.options.run.description"
+msgstr "Jalankan scheduler."
+
+msgid "admin.cli.tool.appKey.error.missingKeyVariable"
+msgstr ""
+"Tidak ada variabel kunci bernama `app_key` yang ditetapkan di bagian "
+"`general` pada berkas konfigurasi. Harap perbarui bagian umum berkas "
+"konfigurasi dan tambahkan baris `app_key = ` atau jalankan perintah `php lib/"
+"pkp/tools/appKey.php configure` untuk menyetelnya."
+
+msgid "admin.cli.tool.appKey.error.InvalidAppKey"
+msgstr ""
+"Kumpulan kunci aplikasi tidak valid, sandi tidak didukung, atau panjang "
+"kunci salah. Sandi yang didukung adalah: {$ciphers}."
+
+msgid "admin.cli.tool.appKeyVariable.error.writtenToConfig"
+msgstr ""
+"Tidak dapat menyetel variabel `app_key` dalam berkas konfigurasi. Harap "
+"perbarui bagian umum berkas konfigurasi dan tambahkan baris `app_key = `."
+
+msgid "admin.cli.tool.scheduler.options.work.description"
+msgstr "Mulai pekerja jadwal."
+
+msgid "admin.cli.tool.appKey.options.generate.description"
+msgstr ""
+"Buat kunci aplikasi baru dan ganti di berkas konfigurasi. Berikan dengan "
+"tanda --show untuk hanya melihat dan --force untuk menimpa kunci aplikasi "
+"yang valid."
+
+msgid "admin.cli.tool.appKey.error.alreadyKeyVariableExists"
+msgstr ""
+"Variabel `app_key` sudah ada di bagian `general` dalam berkas konfigurasi. "
+"Jalankan perintah `php lib/pkp/tools/appKey.php generate` untuk menetapkan "
+"kunci aplikasi baru."
+
+msgid "admin.cli.tool.appKeyVariable.success.writtenToConfig"
+msgstr ""
+"Variabel kunci aplikasi berhasil ditetapkan dalam berkas konfigurasi. "
+"Jalankan perintah `php lib/pkp/tools/appKey.php generate` untuk menetapkan "
+"kunci aplikasi baru."
+
+msgid "admin.cli.tool.scheduler.options.test.description"
+msgstr ""
+"Jalankan tugas terjadwal tertentu dari daftar atau gunakan --name untuk "
+"menjalankan tugas tertentu. Atur tanda --no-scroll untuk melihat daftar "
+"lengkap tanpa menggulir."

@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @file api/v1/reviewers/suggestions/resources/ReviewerSuggestionResource.php
+ *
+ * Copyright (c) 2024 Simon Fraser University
+ * Copyright (c) 2024 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * @class ReviewerSuggestionResource
+ *
+ * @brief Transform the API response of reviewer suggestion in desired format
+ *
+ */
+
+namespace PKP\API\v1\reviewers\suggestions\resources;
+
+use APP\core\Application;
+use APP\facades\Repo;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+use PKP\security\Validation;
+
+class ReviewerSuggestionResource extends JsonResource
+{
+    /**
+     * Transform the resource into an array.
+     */
+    public function toArray(Request $request)
+    {
+        $suggestion = [
+            'id' => $this->id,
+            'submissionId' => $this->submissionId,
+            'suggestingUserId' => $this->suggestingUserId,
+            'familyName' => $this->familyName ?: (object) $this->familyName,
+            'givenName' => $this->givenName,
+            'fullName' => $this->fullname,
+            'displayInitials' => $this->displayInitials,
+            'email' => $this->email,
+            'orcidId' => $this->orcidId,
+            'affiliation' => $this->affiliation,
+            'suggestionReason' => $this->suggestionReason,
+            'approvedAt' => $this->approvedAt,
+            'existingUserId' => $this->existingUser?->getId(),
+            'hasExistingReviewerRole' => $this->hasExistingReviewerRole,
+            'reviewerId' => $this->reviewerId,
+        ];
+
+        if ($request->get('include_reviewer_data') && $this->reviewerId) {
+            $map = Repo::user()->getSchemaMap();
+            $currentUser = Application::get()->getRequest()->getUser();
+            $options = [
+                'currentUserId' => $currentUser ? (int)$currentUser->getId() : null,
+                'isSiteAdmin' => Validation::isSiteAdmin(),
+            ];
+            $suggestion['reviewer'] = $map->summarizeReviewer($this->reviewer, $options);
+        }
+
+        return $suggestion;
+    }
+}

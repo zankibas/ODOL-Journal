@@ -1,0 +1,74 @@
+{**
+ * templates/submission/review-publication-field.tpl
+ *
+ * Copyright (c) 2014-2022 Simon Fraser University
+ * Copyright (c) 2003-2022 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * A helper template to show the value of a publication property.
+ *
+ * @uses string $prop The name of the property, eg `keywords`
+ * @uses string $inLocale The locale key to show. Only include this for localized data
+ * @uses string $name The user-facing name of this property, eg "Keywords"
+ * @uses string $type The type of the value. Accepts `string`, `array`, `html`
+ * @uses string $dataField The name of the field to display when `$type` is 'array' and the publication property contains an array of objects.
+ *}
+
+{if $inLocale}
+    {assign var="localizedProp" value=$prop|cat:"['"|cat:$inLocale|cat:"']"}
+{else}
+    {assign var="localizedProp" value=$prop}
+{/if}
+
+<div class="submissionWizard__reviewPanel__item">
+    <template v-if="errors.{$prop|escape} && errors.{$localizedProp|escape}">
+        <notification
+            v-for="(error, i) in errors.{$localizedProp|escape}"
+            :key="i"
+            type="warning"
+        >
+            <icon icon="Error" class="h-5 w-5"></icon>
+            {{ error }}
+        </notification>
+    </template>
+    <h4 class="submissionWizard__reviewPanel__item__header">
+        {$name}
+    </h4>
+    <div
+        class="submissionWizard__reviewPanel__item__value semantic-defaults"
+        {if $type === 'html'}
+            v-strip-unsafe-html="publication.{$localizedProp|escape}
+                ? publication.{$localizedProp|escape}
+                : '{translate key="common.noneProvided"}'"
+        {/if}
+    >
+        {if $type === 'array'}
+            <template v-if="publication.{$localizedProp|escape} && publication.{$localizedProp|escape}.length">
+                {if $dataField}
+                    {{
+                        publication.{$localizedProp|escape}
+                            .map(item => item['{$dataField}'])
+                            .join(t('common.commaListSeparator'))
+                    }}
+               {else}
+                   {{
+                       publication.{$localizedProp|escape}
+                           .join(t('common.commaListSeparator'))
+                   }}
+               {/if}
+            </template>
+            <template v-else>
+                {translate key="common.noneProvided"}
+            </template>
+        {elseif $type === 'html'}
+            {* empty. see v-strip-unsafe-html above *}
+        {else}
+            <template v-if="publication.{$localizedProp|escape}">
+                {{ publication.{$localizedProp|escape} }}
+            </template>
+            <template v-else>
+                {translate key="common.noneProvided"}
+            </template>
+        {/if}
+    </div>
+</div>

@@ -1,0 +1,38 @@
+================================
+=== OJS PubMed Export Plugin
+=== Version: 1.0.1
+=== Release date: May 10, 2006
+=== Author: MJ Suhonos <mj@robotninja.com>
+================================
+
+About
+-----
+This plugin provides an import/export plugin to generate bibliographic information for articles in the current issue
+in PubMed standard publisher data format XML for indexing in NLM PubMed/MEDLINE.
+Details on the XML format and data requirements is available at: https://www.ncbi.nlm.nih.gov/books/NBK3828/
+
+License
+-------
+This plugin is licensed under the GNU General Public License v3. See the file docs/COPYING for the complete terms of this license.
+
+Installation
+------------
+This plugin is included with OJS by default.
+
+The export functionality can be accessed through:
+ - Tools > Import/Export > PubMed XML Export Plugin
+
+Known Issues/Limitations
+---------
+- the <Replaces/> tag is not used as OJS does not contain PMID metadata
+- because of ambiguity in the pagination functionality in OJS, <FirstPage/> and <LastPage/> tags may potentially be generated incorrectly
+- article IDs are limited to internal ("pii") identifiers; DOIs are not handled because of limitations in the current version of OJS (including forward-slash escaping)
+
+Localization
+------------
+Localized titles are determined from the per-article language setting, rather than the journal locale.  As such, localized bibliographic data should be handled properly as per the PubMed data format guidelines, however, it has not been explicitly tested as of this release.
+
+Version History
+---------------
+1.0.1  - improved page number parsing to handle more formats (eg. "pp. 3- 12")
+1.0    - initial release
