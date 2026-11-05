@@ -1,0 +1,24 @@
+# Ignore PHP source & heavy backend folders on Vercel so Serverless Function stays lightweight
+/api/v1/
+/cache/
+/classes/
+/controllers/
+/dbscripts/
+/docs/
+/error/
+/jobs/
+/lib/
+/locale/
+/pages/
+/plugins/
+/registry/
+/schemas/
+/templates/
+/tools/
+/*.php
+/*.ps1
+/*.bat
+/*.log
+/*.cjs
+/*.xml
+/*.properties

@@ -6,16 +6,20 @@
   "outputDirectory": "vercel_dist",
   "rewrites": [
     {
+      "source": "/",
+      "destination": "/api/__vercel_proxy"
+    },
+    {
       "source": "/ODOL",
-      "destination": "/ODOL/index.html"
+      "destination": "/api/__vercel_proxy"
     },
     {
-      "source": "/ODOL/index.php/journal",
-      "destination": "/ODOL/index.php/journal/index.html"
+      "source": "/ODOL/index.php/:path*",
+      "destination": "/api/__vercel_proxy"
     },
     {
-      "source": "/ODOL/index.php/journal/:path*",
-      "destination": "/ODOL/index.php/journal/:path*/index.html"
+      "source": "/ODOL/:path*",
+      "destination": "/api/__vercel_proxy"
     }
   ]
 }

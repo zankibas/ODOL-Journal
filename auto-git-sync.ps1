@@ -4,10 +4,60 @@ param(
 )
 
 $ErrorActionPreference = "Continue"
-$env:Path += ";$env:LOCALAPPDATA\Programs\Git\cmd;$env:LOCALAPPDATA\Programs\Git\mingw64\bin;C:\Program Files\GitHub CLI"
+$env:Path += ";$env:LOCALAPPDATA\Programs\Git\cmd;$env:LOCALAPPDATA\Programs\Git\mingw64\bin;C:\Program Files\GitHub CLI;C:\Program Files (x86)\cloudflared;C:\Program Files\cloudflared"
 Set-Location "C:\xampp\htdocs\ODOL"
 
+function Ensure-BackendConnector {
+    # Pastikan Apache & MySQL XAMPP berjalan
+    if (-not (Get-Process httpd -ErrorAction SilentlyContinue)) {
+        Start-Process -FilePath "C:\xampp\apache\bin\httpd.exe" -WindowStyle Hidden
+    }
+    if (-not (Get-Process mysqld -ErrorAction SilentlyContinue)) {
+        Start-Process -FilePath "C:\xampp\mysql\bin\mysqld.exe" -ArgumentList "--defaults-file=C:\xampp\mysql\bin\my.ini" -WindowStyle Hidden
+    }
+
+    $logFile = "C:\xampp\htdocs\ODOL\tunnel.log"
+    $cfProc = Get-Process cloudflared -ErrorAction SilentlyContinue
+    $tunnelUrl = $null
+
+    if ($cfProc -and (Test-Path $logFile)) {
+        $content = Get-Content $logFile -Raw -ErrorAction SilentlyContinue
+        if ($content -match "(https://[a-zA-Z0-9-]+\.trycloudflare\.com)") {
+            $tunnelUrl = $matches[1]
+        }
+    }
+
+    if (-not $tunnelUrl) {
+        Get-Process cloudflared -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+        if (Test-Path $logFile) { Remove-Item $logFile -Force }
+        $cfExe = "C:\Program Files (x86)\cloudflared\cloudflared.exe"
+        if (-not (Test-Path $cfExe)) { $cfExe = "C:\Program Files\cloudflared\cloudflared.exe" }
+        Start-Process -FilePath $cfExe -ArgumentList "tunnel --url http://localhost:80 --logfile `"$logFile`"" -WindowStyle Hidden
+        for ($i = 0; $i -lt 25; $i++) {
+            Start-Sleep -Seconds 1
+            if (Test-Path $logFile) {
+                $content = Get-Content $logFile -Raw -ErrorAction SilentlyContinue
+                if ($content -match "(https://[a-zA-Z0-9-]+\.trycloudflare\.com)") {
+                    $tunnelUrl = $matches[1]
+                    break
+                }
+            }
+        }
+    }
+
+    if ($tunnelUrl) {
+        $cfgPath = "C:\xampp\htdocs\ODOL\api\_tunnel_config.json"
+        $newJson = "{`n  `"tunnelUrl`": `"$tunnelUrl`"`n}"
+        $oldJson = if (Test-Path $cfgPath) { Get-Content $cfgPath -Raw } else { "" }
+        if ($oldJson.Trim() -ne $newJson.Trim()) {
+            Set-Content -Path $cfgPath -Value $newJson -Encoding UTF8
+        }
+    }
+}
+
 function Sync-OjsGit {
+    Ensure-BackendConnector
+
     Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Menjalankan Auto Git Pull dari GitHub..." -ForegroundColor Cyan
     git pull --rebase origin main 2>&1 | Out-Host
 
@@ -16,28 +66,24 @@ function Sync-OjsGit {
         & "C:\xampp\mysql\bin\mysqldump.exe" -u root odol_jurnal --result-file="C:\xampp\htdocs\ODOL\dbscripts\odol_jurnal_backup.sql" 2>$null
     }
 
-    # Update build untuk Vercel jika localhost/ODOL aktif
-    try {
-        $ping = Invoke-WebRequest -Uri "http://localhost/ODOL" -UseBasicParsing -TimeoutSec 3 -ErrorAction Stop
-        if ($ping.StatusCode -eq 200) {
-            & "C:\xampp\htdocs\ODOL\build-vercel.ps1"
-        }
-    } catch {}
+    if (-not (Test-Path "C:\xampp\htdocs\ODOL\vercel_dist\ODOL\js\build.js")) {
+        & "C:\xampp\htdocs\ODOL\build-vercel.ps1"
+    }
 
     $status = git status --porcelain
     if ($status) {
         Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Perubahan terdeteksi, melakukan Auto Commit & Push ke GitHub..." -ForegroundColor Yellow
         git add -A
-        git commit -m "Auto-sync OJS ODOL ($(Get-Date -Format 'yyyy-MM-dd HH:mm:ss'))"
+        git commit -m "Auto-sync OJS ODOL ($(Get-Date -Format 'yyyy-MM-dd HH:mm:ss'))" -q
         git push origin main 2>&1 | Out-Host
-        Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Sinkronisasi ke GitHub berhasil!" -ForegroundColor Green
+        Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Sinkronisasi ke GitHub & Vercel berhasil!" -ForegroundColor Green
     } else {
         Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Repository sudah sinkron dengan GitHub." -ForegroundColor Green
     }
 }
 
 if ($Watch) {
-    Write-Host "=== Mode Auto Git Pull & Push Aktif (Setiap $IntervalSeconds detik) ===" -ForegroundColor Green
+    Write-Host "=== Mode Auto Git Pull & Push + Vercel Backend Aktif (Setiap $IntervalSeconds detik) ===" -ForegroundColor Green
     while ($true) {
         Sync-OjsGit
         Start-Sleep -Seconds $IntervalSeconds
