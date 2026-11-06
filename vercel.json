@@ -1,21 +1,5 @@
 {
   "version": 2,
-  "framework": null,
-  "buildCommand": "",
-  "installCommand": "",
-  "outputDirectory": "vercel_dist",
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/api/proxy?__p=/ODOL/index.php/journal"
-    },
-    {
-      "source": "/ODOL",
-      "destination": "/api/proxy?__p=/ODOL/index.php/journal"
-    },
-    {
-      "source": "/ODOL/:__vp*",
-      "destination": "/api/proxy?__p=/ODOL/:__vp*"
-    }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false
 }
