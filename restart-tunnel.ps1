@@ -10,7 +10,7 @@ if (-not (Test-Path $cfExe)) {
     $cfExe = "C:\Program Files\cloudflared\cloudflared.exe"
 }
 
-Start-Process -FilePath $cfExe -ArgumentList "tunnel --url http://localhost:80 --logfile `"$logFile`"" -WindowStyle Hidden
+Start-Process -FilePath $cfExe -ArgumentList "tunnel --protocol http2 --edge-ip-version 4 --url http://localhost:80 --logfile `"$logFile`"" -WindowStyle Hidden
 
 $tunnelUrl = $null
 for ($i = 0; $i -lt 30; $i++) {
@@ -28,7 +28,12 @@ if ($tunnelUrl) {
     Write-Output "TUNNEL_URL: $tunnelUrl"
     $cfgPath = "C:\xampp\htdocs\ODOL\api\tunnel_config.json"
     $json = "{`n  `"tunnelUrl`": `"$tunnelUrl`"`n}"
-    Set-Content -Path $cfgPath -Value $json -Encoding UTF8
+    [System.IO.File]::WriteAllText($cfgPath, $json, (New-Object System.Text.UTF8Encoding($false)))
+
+    # Push updated tunnel to GitHub so Vercel proxy immediately routes to it
+    git -C "C:\xampp\htdocs\ODOL" add api/tunnel_config.json
+    git -C "C:\xampp\htdocs\ODOL" commit -m "Auto-update tunnel URL: $tunnelUrl" -q
+    git -C "C:\xampp\htdocs\ODOL" push origin main -q
 
     for ($j = 0; $j -lt 15; $j++) {
         Start-Sleep -Seconds 1

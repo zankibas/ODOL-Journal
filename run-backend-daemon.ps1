@@ -63,7 +63,7 @@ while ($true) {
         Start-Sleep -Seconds 1
         if (Test-Path $logFile) { Remove-Item $logFile -Force -ErrorAction SilentlyContinue }
         
-        Start-Process -FilePath $cfExe -ArgumentList "tunnel --edge-ip-version 4 --url http://localhost:80 --logfile `"$logFile`"" -WindowStyle Hidden
+        Start-Process -FilePath $cfExe -ArgumentList "tunnel --protocol http2 --edge-ip-version 4 --url http://localhost:80 --logfile `"$logFile`"" -WindowStyle Hidden
 
         for ($i = 0; $i -lt 30; $i++) {
             Start-Sleep -Seconds 1
