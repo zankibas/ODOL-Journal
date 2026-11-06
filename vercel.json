@@ -1,5 +1,11 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/ODOL/index.php/journal/:match*", "destination": "/index.html" },
+    { "source": "/ODOL/index.php/:match*", "destination": "/index.html" },
+    { "source": "/ODOL/:match*", "destination": "/index.html" },
+    { "source": "/ODOL", "destination": "/index.html" }
+  ]
 }

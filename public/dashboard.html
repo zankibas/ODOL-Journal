@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Submissions — Oral Dentistry and Odontology Letters</title>
+	<style>
+		* { box-sizing: border-box; }
+		body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #eef1f4; color: #212529; font-size: 14px; }
+		.pkp_header { background: #1E293B; color: #fff; height: 50px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+		.pkp_title { font-weight: 700; font-size: 15px; color: #F8FAFC; text-decoration: none; }
+		.pkp_user { font-size: 13px; color: #94A3B8; }
+		.pkp_user a { color: #E2E8F0; text-decoration: none; font-weight: 600; margin-left: 10px; }
+		.pkp_content { display: flex; min-height: calc(100vh - 50px); }
+		.pkp_sidebar { width: 220px; background: #334155; color: #CBD5E1; padding-top: 15px; flex-shrink: 0; }
+		.pkp_nav { padding: 10px 20px; color: #CBD5E1; text-decoration: none; display: flex; align-items: center; font-size: 13.5px; border-left: 4px solid transparent; cursor: pointer; }
+		.pkp_nav:hover, .pkp_nav.active { background: #1E293B; color: #FFFFFF; border-left-color: #006699; font-weight: 600; }
+		.pkp_main { flex: 1; padding: 24px 30px; }
+		.pkp_tabs { display: flex; border-bottom: 2px solid #CBD5E1; margin-bottom: 20px; gap: 4px; }
+		.pkp_tab { padding: 9px 18px; font-weight: 600; color: #475569; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; font-size: 13.5px; }
+		.pkp_tab.active { color: #006699; border-bottom-color: #006699; background: #fff; border-radius: 4px 4px 0 0; }
+		.pkp_card { background: #fff; border: 1px solid #CBD5E1; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); padding: 20px; }
+		.pkp_stepper { display: flex; gap: 6px; margin-bottom: 18px; }
+		.pkp_step { flex: 1; padding: 10px; background: #E2E8F0; text-align: center; font-weight: 600; font-size: 12.5px; border-radius: 3px; cursor: pointer; color: #475569; }
+		.pkp_step.active { background: #006699; color: #fff; }
+		.pkp_step.completed { background: #E0F2FE; color: #0369A1; }
+		.pkp_btn { display: inline-block; padding: 7px 15px; font-size: 13px; font-weight: 600; border-radius: 3px; border: none; cursor: pointer; text-decoration: none; }
+		.btn_blue { background: #006699; color: #fff; }
+		.btn_green { background: #15803D; color: #fff; }
+		.btn_amber { background: #D97706; color: #fff; }
+		.btn_gray { background: #F1F5F9; color: #334155; border: 1px solid #CBD5E1; }
+		.badge { display: inline-block; padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 10px; }
+	</style>
+</head>
+<body>
+	<div class="pkp_header">
+		<a href="/index.html" class="pkp_title">&#9776; Oral Dentistry and Odontology Letters</a>
+		<div class="pkp_user">
+			Logged in as: <strong id="userDisplay" style="color:#fff;">Managing Editor</strong> | 
+			<a href="/index.html" target="_blank">View Site</a> | 
+			<a href="/login.html" onclick="localStorage.removeItem('pkp_user')">Logout</a>
+		</div>
+	</div>
+	<div class="pkp_content">
+		<div class="pkp_sidebar">
+			<div class="pkp_nav active">&#128194; Submissions</div>
+			<div class="pkp_nav">&#128218; Issues</div>
+			<div class="pkp_nav">&#9881; Settings</div>
+			<div class="pkp_nav">&#128101; Users &amp; Roles</div>
+		</div>
+		<div class="pkp_main">
+			<h1 style="font-size:24px; font-weight:600; margin:0 0 16px 0;">Submissions</h1>
+			<div class="pkp_tabs">
+				<div class="pkp_tab active">My Queue (1)</div>
+				<div class="pkp_tab">Unassigned (0)</div>
+				<div class="pkp_tab">All Active (1)</div>
+				<div class="pkp_tab">Archives (1)</div>
+			</div>
+			<div class="pkp_card">
+				<div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+					<div>
+						<span style="font-size:12px; color:#64748B; font-weight:700;">SUBMISSION #1 &bull; MANUSCRIPT WORKFLOW</span>
+						<h2 style="font-size:16px; margin:4px 0 0 0;">Efektivitas Formulasi Gel Nano-Hidroksiapatit dari Cangkang Telur terhadap Remineralisasi Enamel Gigi</h2>
+					</div>
+					<span class="badge" style="background:#DBEAFE; color:#1D4ED8;" id="stageBadge">External Review (Round 1)</span>
+				</div>
+				<div class="pkp_stepper">
+					<div class="pkp_step completed" onclick="setWf(1, this)">1. Submission &#10003;</div>
+					<div class="pkp_step active" onclick="setWf(2, this)">2. Review &#9679;</div>
+					<div class="pkp_step" onclick="setWf(3, this)">3. Copyediting</div>
+					<div class="pkp_step" onclick="setWf(4, this)">4. Production</div>
+				</div>
+				<div id="wfBox" style="background:#F8FAFC; border:1px solid #E2E8F0; padding:16px; border-radius:4px;"></div>
+			</div>
+		</div>
+	</div>
+	<script>
+		const u = JSON.parse(localStorage.getItem('pkp_user') || '{"name":"Editor / Journal Manager"}');
+		document.getElementById('userDisplay').textContent = u.name;
+
+		function setWf(step, el) {
+			document.querySelectorAll('.pkp_step').forEach(s => s.classList.remove('active'));
+			if(el) el.classList.add('active');
+			const box = document.getElementById('wfBox');
+			const badge = document.getElementById('stageBadge');
+
+			if (step === 1) {
+				badge.textContent = "Tahap 1: Desk Screening";
+				box.innerHTML = '<h3 style="margin-top:0; font-size:14px;">Desk Screening &amp; Plagiarism Check</h3><p style="font-size:13px; color:#475569;">Verifikasi template IMRAD dan uji Turnitin (&le; 20%).</p><button class="pkp_btn btn_green" onclick="setWf(2, document.querySelectorAll(\".pkp_step\")[1])">Kirim ke Tahap Review</button>';
+			} else if (step === 2) {
+				badge.textContent = "Tahap 2: Double-Blind Peer Review";
+				box.innerHTML = '<h3 style="margin-top:0; font-size:14px;">Penugasan Mitra Bebestari</h3><p style="font-size:13px; color:#475569;">Dua Reviewer eksternal merekomendasikan Revisions Required.</p><button class="pkp_btn btn_amber" onclick="alert(\"Revisi diminta.\")">Request Revisions</button> <button class="pkp_btn btn_green" onclick="setWf(3, document.querySelectorAll(\".pkp_step\")[2])">&#10003; Accept &amp; Send to Copyediting</button>';
+			} else if (step === 3) {
+				badge.textContent = "Tahap 3: Copyediting";
+				box.innerHTML = '<h3 style="margin-top:0; font-size:14px;">Penyelarasan Bahasa &amp; Sitasi APA 7th</h3><p style="font-size:13px; color:#475569;">Penyuntingan naskah dan validasi hyperlink DOI referensi.</p><button class="pkp_btn btn_blue" onclick="setWf(4, document.querySelectorAll(\".pkp_step\")[3])">Kirim ke Tahap Produksi</button>';
+			} else if (step === 4) {
+				badge.textContent = "Tahap 4: Production &amp; Published";
+				box.innerHTML = '<h3 style="margin-top:0; font-size:14px;">Galley PDF Selesai &amp; Terbit</h3><p style="font-size:13px; color:#475569;">Naskah telah dijadwalkan dan diterbitkan pada terbitan resmi.</p><button class="pkp_btn btn_green" onclick="alert(\"Terbitan berhasil dipublikasikan!\")">&#9733; Publish Issue</button> <a href="/index.html" class="pkp_btn btn_gray">Buka Halaman Web</a>';
+			}
+		}
+		setWf(2);
+	</script>
+</body>
+</html>
