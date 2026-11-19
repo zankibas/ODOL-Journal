@@ -10,14 +10,38 @@ async function getTunnelBase() {
     return cachedTunnelUrl;
   }
 
-  // 1. Try reading latest tunnel URL from GitHub raw dynamically
+  // 1. Try reading latest tunnel URL from GitHub API dynamically (uncached real-time)
+  try {
+    const apiRes = await fetch(
+      'https://api.github.com/repos/zankibas/ODOL-Journal/contents/api/tunnel_config.json',
+      {
+        headers: {
+          'Accept': 'application/vnd.github.raw+json',
+          'User-Agent': 'OJS-Vercel-Proxy',
+        },
+        signal: AbortSignal.timeout(3500),
+      }
+    );
+    if (apiRes.ok) {
+      const text = await apiRes.text();
+      const cleanJson = text.replace(/^\uFEFF/, '').trim();
+      const data = JSON.parse(cleanJson);
+      if (data && data.tunnelUrl) {
+        cachedTunnelUrl = data.tunnelUrl.replace(/\/$/, '');
+        lastFetchTime = now;
+        return cachedTunnelUrl;
+      }
+    }
+  } catch (_) {}
+
+  // 2. Fallback to GitHub raw
   try {
     const rawRes = await fetch(
       `https://raw.githubusercontent.com/zankibas/ODOL-Journal/main/api/tunnel_config.json?_t=${now}`,
       {
         cache: 'no-store',
-        headers: { 'Cache-Control': 'no-cache' },
-        signal: AbortSignal.timeout(3500),
+        headers: { 'Cache-Control': 'no-cache', 'User-Agent': 'OJS-Vercel-Proxy' },
+        signal: AbortSignal.timeout(3000),
       }
     );
     if (rawRes.ok) {
@@ -32,7 +56,7 @@ async function getTunnelBase() {
     }
   } catch (_) {}
 
-  // 2. Fallback to bundled local config
+  // 3. Fallback to bundled local config
   try {
     const configPath = path.join(__dirname, 'tunnel_config.json');
     if (fs.existsSync(configPath)) {

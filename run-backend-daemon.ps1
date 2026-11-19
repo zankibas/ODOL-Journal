@@ -32,6 +32,8 @@ function Ensure-Local-Services {
 
 Write-Host "=== OJS ODOL Backend & Tunnel Daemon Started ===" -ForegroundColor Green
 
+$failCount = 0
+
 while ($true) {
     Ensure-Local-Services
 
@@ -48,17 +50,24 @@ while ($true) {
 
     if ($cfProc -and $currentUrl) {
         try {
-            $resp = Invoke-WebRequest -Uri "$currentUrl/ODOL/index.php/journal" -UseBasicParsing -TimeoutSec 6 -ErrorAction Stop
+            $resp = Invoke-WebRequest -Uri "$currentUrl/ODOL/index.php/journal" -UseBasicParsing -TimeoutSec 15 -ErrorAction Stop
             if ($resp.StatusCode -eq 200) {
                 $tunnelHealthy = $true
+                $failCount = 0
             }
         } catch {
             $tunnelHealthy = $false
+            $failCount++
+            Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Health check warning ($failCount/3): $_" -ForegroundColor Yellow
         }
+    } else {
+        # Cloudflared is not running at all
+        $failCount = 3
     }
 
-    if (-not $tunnelHealthy) {
-        Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Tunnel disconnected or unhealthy. Restarting cloudflared..." -ForegroundColor Magenta
+    if ($failCount -ge 3) {
+        Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Tunnel confirmed dead (3 failed checks). Restarting cloudflared..." -ForegroundColor Magenta
+        $failCount = 0
         Get-Process cloudflared -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
         Start-Sleep -Seconds 1
         if (Test-Path $logFile) { Remove-Item $logFile -Force -ErrorAction SilentlyContinue }
